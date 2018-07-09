@@ -1,45 +1,25 @@
 ﻿using System;
 using System.Data.SQLite;
-using CoreDdd.Nhibernate.Configurations;
-using CoreDdd.Nhibernate.Repositories;
-using CoreDdd.Nhibernate.UnitOfWorks;
-using CoreDddSampleConsoleApp.Domain;
+using CoreDddSampleConsoleApp.Samples;
 using NHibernate.Tool.hbm2ddl;
 
 namespace CoreDddSampleConsoleApp
 {
     class Program
     {
+        private static CoreDddSampleNhibernateConfigurator _nhibernateConfigurator;
+
         static void Main(string[] args)
         {
-            var nhibernateConfigurator = new CoreDddSampleNhibernateConfigurator();
-            _CreateDatabase(nhibernateConfigurator);
+            _nhibernateConfigurator = new CoreDddSampleNhibernateConfigurator();
+            _CreateDatabase();
 
-            using (var unitOfWork = new NhibernateUnitOfWork(nhibernateConfigurator))
-            {
-                unitOfWork.BeginTransaction();
-
-                var productRepository = new NhibernateRepository<Product>(unitOfWork);
-
-                try
-                {
-                    var product = new Product();
-
-                    productRepository.Save(product);
-
-                    unitOfWork.Commit();
-                }
-                catch
-                {
-                    unitOfWork.Rollback();
-                    throw;
-                }
-            }
+            new PersistNewEntitySample().PersistNewEntity(_nhibernateConfigurator);
         }
 
-        private static void _CreateDatabase(INhibernateConfigurator nhibernateConfigurator)
+        private static void _CreateDatabase()
         {
-            var configuration = nhibernateConfigurator.GetConfiguration();
+            var configuration = _nhibernateConfigurator.GetConfiguration();
             var connectionString = configuration.Properties["connection.connection_string"];
 
             using (var connection = new SQLiteConnection(connectionString))
