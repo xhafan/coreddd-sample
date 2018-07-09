@@ -5,6 +5,10 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
   <ItemGroup>
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -12,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CoreDdd" Version="3.0.18" />
-    <PackageReference Include="CoreDdd.Nhibernate" Version="3.0.18" />
+    <PackageReference Include="CoreDdd" Version="3.0.19" />
+    <PackageReference Include="CoreDdd.Nhibernate" Version="3.0.19" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.108" />
   </ItemGroup>
 

@@ -1,12 +1,14 @@
-﻿using CoreDdd.Nhibernate.Repositories;
+﻿using System;
+using System.Threading.Tasks;
+using CoreDdd.Nhibernate.Repositories;
 using CoreDdd.Nhibernate.UnitOfWorks;
 using CoreDddSampleConsoleApp.Domain;
 
-namespace CoreDddSampleConsoleApp.Samples
+namespace CoreDddSampleConsoleApp.Samples.PersistNewEntity
 {
     public class PersistNewEntitySample
     {
-        public void PersistNewEntity(CoreDddSampleNhibernateConfigurator nhibernateConfigurator)
+        public async Task PersistNewEntity(CoreDddSampleNhibernateConfigurator nhibernateConfigurator)
         {
             using (var unitOfWork = new NhibernateUnitOfWork(nhibernateConfigurator))
             {
@@ -16,11 +18,13 @@ namespace CoreDddSampleConsoleApp.Samples
 
                 try
                 {
-                    var product = new Product();
+                    var product = new Product("product name", "product description", 10m);
 
-                    productRepository.Save(product);
+                    await productRepository.SaveAsync(product);
 
                     unitOfWork.Commit();
+
+                    Console.WriteLine("Product entity was persisted.");
                 }
                 catch
                 {

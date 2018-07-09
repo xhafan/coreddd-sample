@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Data.SQLite;
+using System.Threading.Tasks;
 using CoreDddSampleConsoleApp.Samples;
+using CoreDddSampleConsoleApp.Samples.MultipleQueries;
+using CoreDddSampleConsoleApp.Samples.PersistNewEntity;
+using CoreDddSampleConsoleApp.Samples.Query;
 using NHibernate.Tool.hbm2ddl;
 
 namespace CoreDddSampleConsoleApp
@@ -9,12 +13,14 @@ namespace CoreDddSampleConsoleApp
     {
         private static CoreDddSampleNhibernateConfigurator _nhibernateConfigurator;
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             _nhibernateConfigurator = new CoreDddSampleNhibernateConfigurator();
             _CreateDatabase();
 
-            new PersistNewEntitySample().PersistNewEntity(_nhibernateConfigurator);
+            await new PersistNewEntitySample().PersistNewEntity(_nhibernateConfigurator);
+            await new QuerySample().QueryAllProducts(_nhibernateConfigurator);
+            await new MultipleQueriesSample().ExecuteMultipleQueries(_nhibernateConfigurator);
         }
 
         private static void _CreateDatabase()
