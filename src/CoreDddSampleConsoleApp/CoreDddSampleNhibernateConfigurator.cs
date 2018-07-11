@@ -20,7 +20,7 @@ namespace CoreDddSampleConsoleApp
 
         protected override Assembly[] GetAssembliesToMap()
         {
-            return new[] {typeof(Policy).Assembly};
+            return new[] {typeof(Ship).Assembly};
         }
 
         protected override IEnumerable<Type> GetIncludeBaseTypes()
