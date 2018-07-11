@@ -8,7 +8,7 @@ namespace CoreDddSampleConsoleApp.Domain
     {
         private readonly ICollection<PolicyItem> _items = new HashSet<PolicyItem>();
 
-        protected Policy() {} // protected parameterless constructor needed by nhibernate to be able to instantiate the entity when loaded from database
+        protected Policy() {} // parameterless constructor needed by nhibernate to be able to instantiate the entity when loaded from database
 
         public Policy(
             PolicyHolder policyHolder,
@@ -24,7 +24,7 @@ namespace CoreDddSampleConsoleApp.Domain
         }
 
         public virtual PolicyHolder PolicyHolder { get; protected set; } // virtual modifier needed by nhibernate - https://stackoverflow.com/a/848116/379279
-        public virtual DateTime StartDate { get; protected set; } // protected modifier - todo
+        public virtual DateTime StartDate { get; protected set; } // protected modifier needed by nhibernate - cannot be private
         public virtual DateTime EndDate { get; protected set; }
         public virtual string Terms { get; protected set; }
 
