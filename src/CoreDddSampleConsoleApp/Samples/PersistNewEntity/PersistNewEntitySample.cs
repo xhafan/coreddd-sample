@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using CoreDdd.Nhibernate.Repositories;
 using CoreDdd.Nhibernate.UnitOfWorks;
-using CoreDddSampleConsoleApp.Builders;
 using CoreDddSampleConsoleApp.Domain;
 
 namespace CoreDddSampleConsoleApp.Samples.PersistNewEntity
@@ -15,16 +14,16 @@ namespace CoreDddSampleConsoleApp.Samples.PersistNewEntity
             {
                 unitOfWork.BeginTransaction();
 
-                var policyHolderRepository = new NhibernateRepository<PolicyHolder>(unitOfWork);
+                var shipRepository = new NhibernateRepository<Ship>(unitOfWork);
 
                 try
                 {
-                    var policyHolder = new PolicyHolderBuilder().Build();
-                    await policyHolderRepository.SaveAsync(policyHolder);
+                    var ship = new Ship("ship name", tonnage: 10m);
+                    await shipRepository.SaveAsync(ship);
 
                     unitOfWork.Commit();
 
-                    Console.WriteLine("PolicyHolder entity was persisted.");
+                    Console.WriteLine("Ship entity was persisted.");
                 }
                 catch
                 {
