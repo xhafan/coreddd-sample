@@ -20,12 +20,12 @@ namespace CoreDddSampleConsoleApp
             {
                 connection.Open();
                 await new SchemaExport(configuration).ExecuteAsync(
-                        useStdOut: true,
-                        execute: true,
-                        justDrop: false,
-                        connection: connection,
-                        exportOutput: Console.Out)
-                    ;
+                    useStdOut: true,
+                    execute: true,
+                    justDrop: false,
+                    connection: connection,
+                    exportOutput: Console.Out
+                );
                 await _CreateDtoViews(connection);
             }
         }

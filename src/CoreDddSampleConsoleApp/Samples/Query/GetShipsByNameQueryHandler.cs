@@ -5,14 +5,14 @@ using NHibernate;
 
 namespace CoreDddSampleConsoleApp.Samples.Query
 {
-    public class ShipByNameQueryHandler : BaseQueryOverHandler<ShipByNameQuery>
+    public class GetShipsByNameQueryHandler : BaseQueryOverHandler<GetShipsByNameQuery>
     {
-        public ShipByNameQueryHandler(NhibernateUnitOfWork unitOfWork) 
+        public GetShipsByNameQueryHandler(NhibernateUnitOfWork unitOfWork) 
             : base(unitOfWork)
         {
         }
 
-        protected override IQueryOver GetQueryOver<TResult>(ShipByNameQuery query)
+        protected override IQueryOver GetQueryOver<TResult>(GetShipsByNameQuery query)
         {
             return Session.QueryOver<ShipDto>()
                           .WhereRestrictionOn(x => x.Name)

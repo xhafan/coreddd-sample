@@ -25,8 +25,8 @@ namespace CoreDddSampleConsoleApp.Samples.Query
 
                     unitOfWork.Flush();
 
-                    var shipByNameQuery = new ShipByNameQuery {ShipName = "lady"};
-                    var shipByNameQueryHandler = new ShipByNameQueryHandler(unitOfWork);
+                    var shipByNameQuery = new GetShipsByNameQuery {ShipName = "lady"};
+                    var shipByNameQueryHandler = new GetShipsByNameQueryHandler(unitOfWork);
 
                     var shipDtos = await shipByNameQueryHandler.ExecuteAsync<ShipDto>(shipByNameQuery);
 
