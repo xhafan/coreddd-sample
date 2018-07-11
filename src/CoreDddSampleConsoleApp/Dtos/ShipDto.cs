@@ -2,7 +2,7 @@
 {
     public class ShipDto
     {
-        public int ShipId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

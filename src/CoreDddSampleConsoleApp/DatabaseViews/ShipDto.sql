@@ -5,6 +5,6 @@ drop view if exists ShipDto;
 create view ShipDto
 as
 select 
-    Id as ShipId
+    Id
     , Name
 from Ship 
