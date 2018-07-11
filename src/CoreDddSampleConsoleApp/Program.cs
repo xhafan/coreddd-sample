@@ -15,6 +15,7 @@ namespace CoreDddSampleConsoleApp
 
             await new PersistNewEntitySample().PersistNewEntity(nhibernateConfigurator);
             await new QuerySample().QueryShipsByName(nhibernateConfigurator);
+            await new QueryWithQueryExecutorSample().QueryShipsByName(nhibernateConfigurator);
             await new MultipleQueriesSample().ExecuteMultipleQueries(nhibernateConfigurator);
         }
     }
