@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using CoreDdd.Nhibernate.Repositories;
 using CoreDdd.Nhibernate.UnitOfWorks;
+using CoreDddSampleConsoleApp.Builders;
 using CoreDddSampleConsoleApp.Domain;
 
 namespace CoreDddSampleConsoleApp.Samples.PersistNewEntity
@@ -14,17 +15,17 @@ namespace CoreDddSampleConsoleApp.Samples.PersistNewEntity
             {
                 unitOfWork.BeginTransaction();
 
-                var productRepository = new NhibernateRepository<Product>(unitOfWork);
-
                 try
                 {
-                    var product = new Product("product name", "product description", 10m);
+                    var policyHolder = new PolicyHolderBuilder().Build();
+                    await new NhibernateRepository<PolicyHolder>(unitOfWork).SaveAsync(policyHolder);
 
-                    await productRepository.SaveAsync(product);
+                    var policy = new PolicyBuilder().WithPolicyHolder(policyHolder).Build();                
+                    await new NhibernateRepository<Policy>(unitOfWork).SaveAsync(policy);
 
                     unitOfWork.Commit();
 
-                    Console.WriteLine("Product entity was persisted.");
+                    Console.WriteLine("Policy entity was persisted.");
                 }
                 catch
                 {

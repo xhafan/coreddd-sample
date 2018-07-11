@@ -2,9 +2,9 @@
 
 namespace CoreDddSampleConsoleApp.Samples.MultipleQueries
 {
-    public class GetProductByNameQuery : IQuery
+    public class GetPoliciesByTermsQuery : IQuery
     {
-        public string Name { get; set; }
+        public string Terms { get; set; }
 
     }
 }

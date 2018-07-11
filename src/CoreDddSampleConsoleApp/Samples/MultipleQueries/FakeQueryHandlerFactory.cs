@@ -16,13 +16,13 @@ namespace CoreDddSampleConsoleApp.Samples.MultipleQueries
 
         public IQueryHandler<TQuery> Create<TQuery>() where TQuery : IQuery
         {
-            if (typeof(TQuery) == typeof(GetProductByNameQuery))
+            if (typeof(TQuery) == typeof(GetPoliciesByTermsQuery))
             {
-                return (IQueryHandler<TQuery>)new GetProductByNameQueryHandler(_unitOfWork);
+                return (IQueryHandler<TQuery>)new GetPoliciesByTermsQueryHandler(_unitOfWork);
             }
-            if (typeof(TQuery) == typeof(GetProductByDescriptionQuery))
+            if (typeof(TQuery) == typeof(GetShipPolicyItemsByShipNameQuery))
             {
-                return (IQueryHandler<TQuery>)new GetProductByDescriptionQueryHandler(_unitOfWork);
+                return (IQueryHandler<TQuery>)new GetShipPolicyItemsByShipNameQueryHandler(_unitOfWork);
             }
 
             throw new Exception("Unsupported query");

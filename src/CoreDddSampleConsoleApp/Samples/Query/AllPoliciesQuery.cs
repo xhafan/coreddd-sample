@@ -2,7 +2,7 @@
 
 namespace CoreDddSampleConsoleApp.Samples.Query
 {
-    public class AllProductsQuery : IQuery
+    public class AllPoliciesQuery : IQuery
     {
     }
 }

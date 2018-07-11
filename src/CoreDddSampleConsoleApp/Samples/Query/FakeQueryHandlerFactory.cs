@@ -16,9 +16,9 @@ namespace CoreDddSampleConsoleApp.Samples.Query
 
         public IQueryHandler<TQuery> Create<TQuery>() where TQuery : IQuery
         {
-            if (typeof(TQuery) == typeof(AllProductsQuery))
+            if (typeof(TQuery) == typeof(AllPoliciesQuery))
             {
-                return (IQueryHandler<TQuery>)new AllProductsQueryHandler(_unitOfWork);
+                return (IQueryHandler<TQuery>)new AllPoliciesQueryHandler(_unitOfWork);
             }
             throw new Exception("Unsupported query");
         }
