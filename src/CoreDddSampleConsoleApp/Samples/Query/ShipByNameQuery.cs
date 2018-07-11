@@ -2,7 +2,8 @@
 
 namespace CoreDddSampleConsoleApp.Samples.Query
 {
-    public class AllPoliciesQuery : IQuery
+    public class ShipByNameQuery : IQuery
     {
+        public string ShipName { get; set; }
     }
 }

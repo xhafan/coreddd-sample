@@ -14,7 +14,7 @@ namespace CoreDddSampleConsoleApp
             var nhibernateConfigurator = new CoreDddSampleNhibernateConfigurator(shouldMapDtos: true);
 
             await new PersistNewEntitySample().PersistNewEntity(nhibernateConfigurator);
-            await new QuerySample().QueryAllPolicies(nhibernateConfigurator);
+            await new QuerySample().QueryShipsByName(nhibernateConfigurator);
             await new MultipleQueriesSample().ExecuteMultipleQueries(nhibernateConfigurator);
         }
     }
