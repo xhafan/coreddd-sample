@@ -22,13 +22,7 @@ namespace CoreDddSampleConsoleApp.Samples.Query
 
                 try
                 {
-                    var policyHolder = new PolicyHolderBuilder().Build();
-                    await new NhibernateRepository<PolicyHolder>(unitOfWork).SaveAsync(policyHolder);
-
-                    var policy = new PolicyBuilder().WithPolicyHolder(policyHolder).Build();
-                    await new NhibernateRepository<Policy>(unitOfWork).SaveAsync(policy);
-
-                    unitOfWork.Flush();
+                    await _BuildAndSaveEntities(unitOfWork);
 
                     var allPolicies = await queryExecutor.ExecuteAsync<AllPoliciesQuery, PolicyDto>(new AllPoliciesQuery());
 
@@ -42,6 +36,20 @@ namespace CoreDddSampleConsoleApp.Samples.Query
                     throw;
                 }
             }
+        }
+
+        private async Task _BuildAndSaveEntities(NhibernateUnitOfWork unitOfWork)
+        {
+            var policyHolderRepository = new NhibernateRepository<PolicyHolder>(unitOfWork);
+            var policyRepository = new NhibernateRepository<Policy>(unitOfWork);
+
+            var policyHolder = new PolicyHolderBuilder().Build();
+            await policyHolderRepository.SaveAsync(policyHolder);
+
+            var policy = new PolicyBuilder().WithPolicyHolder(policyHolder).Build();
+            await policyRepository.SaveAsync(policy);
+
+            unitOfWork.Flush();
         }
     }
 }

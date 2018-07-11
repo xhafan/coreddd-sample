@@ -18,29 +18,11 @@ namespace CoreDddSampleConsoleApp.Samples.MultipleQueries
             {
                 unitOfWork.BeginTransaction();
 
-                var policyRepository = new NhibernateRepository<Policy>(unitOfWork);
                 var queryExecutor = new QueryExecutor(new FakeQueryHandlerFactory(unitOfWork));
 
                 try
                 {
-                    var policyHolder = await _BuildAndSavePolicyHolder(unitOfWork);
-
-                    var policyOne = new PolicyBuilder().WithPolicyHolder(policyHolder).WithTerms("policy one terms").Build();
-
-                    var ship = await _BuildAndSaveShip(unitOfWork, shipName: "some ship name");
-                    var policyTwoWithShip = new PolicyBuilder()
-                        .WithPolicyHolder(policyHolder)
-                        .WithShipPolicyItems(new ShipPolicyItemArgs
-                        {
-                            Ship = ship,
-                            InsuredTonnage = 7m,
-                            RatePerTonnage = 5m
-                        })
-                        .Build();
-                    await policyRepository.SaveAsync(policyOne);
-                    await policyRepository.SaveAsync(policyTwoWithShip);
-
-                    unitOfWork.Flush(); 
+                    await _BuildAndSaveEntities(unitOfWork);
 
                     var getPoliciesByTermsQuery = new GetPoliciesByTermsQuery { Terms = "one" };
                     var getPolicyItemsByShipNameQuery = new GetShipPolicyItemsByShipNameQuery{ ShipName = "some ship name" };
@@ -64,18 +46,41 @@ namespace CoreDddSampleConsoleApp.Samples.MultipleQueries
             }
         }
 
-        private async Task<PolicyHolder> _BuildAndSavePolicyHolder(NhibernateUnitOfWork unitOfWork)
+        private async Task _BuildAndSaveEntities(NhibernateUnitOfWork unitOfWork)
         {
-            var policyHolder = new PolicyHolderBuilder().Build();
-            await new NhibernateRepository<PolicyHolder>(unitOfWork).SaveAsync(policyHolder);
-            return policyHolder;
-        }
+            var policyHolderRepository = new NhibernateRepository<PolicyHolder>(unitOfWork);
+            var policyShipRepository = new NhibernateRepository<Ship>(unitOfWork);
+            var policyRepository = new NhibernateRepository<Policy>(unitOfWork);
 
-        private async Task<Ship> _BuildAndSaveShip(NhibernateUnitOfWork unitOfWork, string shipName)
-        {
-            var ship = new ShipBuilder().WithName(shipName).Build();
-            await new NhibernateRepository<Ship>(unitOfWork).SaveAsync(ship);
-            return ship;
+
+            var policyHolder = new PolicyHolderBuilder().Build();
+            await policyHolderRepository.SaveAsync(policyHolder);
+
+
+            var ship = new ShipBuilder().WithName("some ship name").Build();
+            await policyShipRepository.SaveAsync(ship);
+
+
+            var policyOne = new PolicyBuilder()
+                .WithPolicyHolder(policyHolder)
+                .WithTerms("policy one terms")
+                .Build();
+            await policyRepository.SaveAsync(policyOne);
+
+
+            var policyTwoWithShip = new PolicyBuilder()
+                .WithPolicyHolder(policyHolder)
+                .WithShipPolicyItems(new ShipPolicyItemArgs
+                {
+                    Ship = ship,
+                    InsuredTonnage = 7m,
+                    RatePerTonnage = 5m
+                })
+                .Build();
+            await policyRepository.SaveAsync(policyTwoWithShip);
+
+
+            unitOfWork.Flush();
         }
     }
 }
