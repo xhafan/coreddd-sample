@@ -25,10 +25,10 @@ namespace CoreDddSampleConsoleApp.Samples.Query
 
                     unitOfWork.Flush();
 
-                    var shipByNameQuery = new GetShipsByNameQuery {ShipName = "lady"};
-                    var shipByNameQueryHandler = new GetShipsByNameQueryHandler(unitOfWork);
+                    var getShipByNameQuery = new GetShipsByNameQuery {ShipName = "lady"};
+                    var getShipByNameQueryHandler = new GetShipsByNameQueryHandler(unitOfWork);
 
-                    var shipDtos = await shipByNameQueryHandler.ExecuteAsync<ShipDto>(shipByNameQuery);
+                    var shipDtos = await getShipByNameQueryHandler.ExecuteAsync<ShipDto>(getShipByNameQuery);
 
                     Console.WriteLine($"Ship by name query was executed. Number of ships queried: {shipDtos.Count()}");
 
