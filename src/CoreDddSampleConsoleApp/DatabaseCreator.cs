@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data.Common;
 using System.Data.SQLite;
+using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using NHibernate.Tool.hbm2ddl;
 
@@ -30,49 +32,26 @@ namespace CoreDddSampleConsoleApp
 
         private async Task _CreateDtoViews(DbConnection connection)
         {
-            await _CreatePolicyDtoView(connection);
-            await _CreateShipPolicyItemDtoView(connection);
+            await _CreateDatabaseView(connection, "PolicyDto.sql");
+            await _CreateDatabaseView(connection, "ShipPolicyItemDto.sql");
         }
 
-        private static async Task _CreatePolicyDtoView(DbConnection connection)
+        private async Task _CreateDatabaseView(DbConnection connection, string databaseViewFileName)
         {
             using (var cmd = connection.CreateCommand())
             {
-                cmd.CommandText = @"
-drop view if exists PolicyDto;
-
-create view PolicyDto
-as
-select 
-	Id as PolicyId
-    , Terms
-from Policy 
-";
+                cmd.CommandText = await _ReadDatabaseViewEmbeddedResource(databaseViewFileName);
                 await cmd.ExecuteNonQueryAsync();
             }
         }
 
-        private async Task _CreateShipPolicyItemDtoView(DbConnection connection)
+        private async Task<string> _ReadDatabaseViewEmbeddedResource(string resourceName)
         {
-            using (var cmd = connection.CreateCommand())
+            var assembly = Assembly.GetExecutingAssembly();
+            using (var stream = assembly.GetManifestResourceStream($"{GetType().Namespace}.DatabaseViews.{resourceName}"))
+            using (var reader = new StreamReader(stream))
             {
-                cmd.CommandText = @"
-drop view if exists ShipPolicyItemDto;
-
-create view ShipPolicyItemDto
-as
-select 
-	item.Id as PolicyItemId
-    , p.Id as PolicyId
-    , shipItem.ShipId
-    , s.Name     as ShipName
-from Policy p
-join PolicyItem item on item.PolicyId = p.Id
-join CargoPolicyItem cargoItem on cargoItem.PolicyItemId = item.Id
-join ShipPolicyItem shipItem on shipItem.CargoPolicyItemId = item.Id
-join Ship s on s.Id = shipItem.ShipId
-";
-                await cmd.ExecuteNonQueryAsync();
+                return await reader.ReadToEndAsync();
             }
         }
 

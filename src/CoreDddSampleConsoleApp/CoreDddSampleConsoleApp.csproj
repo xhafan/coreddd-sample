@@ -31,6 +31,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="DatabaseViews\PolicyDto.sql" />
+    <EmbeddedResource Include="DatabaseViews\ShipPolicyItemDto.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.108" />
     <PackageReference Include="NHibernateProfiler" Version="5.0.5022" />
   </ItemGroup>
