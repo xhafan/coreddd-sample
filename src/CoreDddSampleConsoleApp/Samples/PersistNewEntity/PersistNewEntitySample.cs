@@ -15,17 +15,16 @@ namespace CoreDddSampleConsoleApp.Samples.PersistNewEntity
             {
                 unitOfWork.BeginTransaction();
 
+                var policyHolderRepository = new NhibernateRepository<PolicyHolder>(unitOfWork);
+
                 try
                 {
                     var policyHolder = new PolicyHolderBuilder().Build();
-                    await new NhibernateRepository<PolicyHolder>(unitOfWork).SaveAsync(policyHolder);
-
-                    var policy = new PolicyBuilder().WithPolicyHolder(policyHolder).Build();                
-                    await new NhibernateRepository<Policy>(unitOfWork).SaveAsync(policy);
+                    await policyHolderRepository.SaveAsync(policyHolder);
 
                     unitOfWork.Commit();
 
-                    Console.WriteLine("Policy entity was persisted.");
+                    Console.WriteLine("PolicyHolder entity was persisted.");
                 }
                 catch
                 {
