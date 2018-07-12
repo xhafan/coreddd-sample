@@ -13,7 +13,7 @@ using CoreDddSampleConsoleApp.Dtos;
 
 namespace CoreDddSampleConsoleApp.Samples.Query
 {
-    public class QueryWithIoCContainerWithManualIoCRegistrationsSample
+    public class QueryWithIoCContainerSample
     {
         public async Task QueryShipsByName()
         {

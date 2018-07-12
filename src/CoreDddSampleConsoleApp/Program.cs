@@ -20,7 +20,7 @@ namespace CoreDddSampleConsoleApp
                 await new MultipleQueriesSample().ExecuteMultipleQueries(nhibernateConfigurator);
             }
 
-            await new QueryWithIoCContainerWithManualIoCRegistrationsSample().QueryShipsByName();
+            await new QueryWithIoCContainerSample().QueryShipsByName();
             await new QueryWithIoCContainerAndQueryExecutorDependencyInjectionSample().QueryShipsByName();
         }
     }
