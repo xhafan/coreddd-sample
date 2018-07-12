@@ -12,22 +12,24 @@ namespace CoreDddSampleConsoleApp
     {
         public async Task CreateDatabase()
         {
-            var nhibernateConfigurator = new CoreDddSampleNhibernateConfigurator(shouldMapDtos: false);
-            var configuration = nhibernateConfigurator.GetConfiguration();
-            var connectionString = configuration.Properties["connection.connection_string"];
-
-            using (var connection = new SQLiteConnection(connectionString))
+            using (var nhibernateConfigurator = new CoreDddSampleNhibernateConfigurator(shouldMapDtos: false))
             {
-                connection.Open();
-                await new SchemaExport(configuration).ExecuteAsync(
-                    useStdOut: true,
-                    execute: true,
-                    justDrop: false,
-                    connection: connection,
-                    exportOutput: Console.Out
-                );
-                await _CreateDtoViews(connection);
-            }
+                var configuration = nhibernateConfigurator.GetConfiguration();
+                var connectionString = configuration.Properties["connection.connection_string"];
+
+                using (var connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    await new SchemaExport(configuration).ExecuteAsync(
+                        useStdOut: true,
+                        execute: true,
+                        justDrop: false,
+                        connection: connection,
+                        exportOutput: null
+                    );
+                    await _CreateDtoViews(connection);
+                }
+            }                
         }
 
         private async Task _CreateDtoViews(DbConnection connection)
@@ -55,6 +57,5 @@ namespace CoreDddSampleConsoleApp
                 return await reader.ReadToEndAsync();
             }
         }
-
     }
 }

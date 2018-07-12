@@ -10,7 +10,7 @@ namespace CoreDddSampleConsoleApp
 {
     public class CoreDddSampleNhibernateConfigurator : NhibernateConfigurator
     {
-        public CoreDddSampleNhibernateConfigurator(bool shouldMapDtos)
+        public CoreDddSampleNhibernateConfigurator(bool shouldMapDtos = true)
             : base(shouldMapDtos)
         {
 #if DEBUG || REPOLINKS_DEBUG
@@ -30,6 +30,17 @@ namespace CoreDddSampleConsoleApp
                 typeof(PolicyItem),
                 typeof(CargoPolicyItem)
             });
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+#if DEBUG || REPOLINKS_DEBUG
+                NHibernateProfiler.Shutdown();
+#endif
+            }
+            base.Dispose(disposing);
         }
     }
 }
