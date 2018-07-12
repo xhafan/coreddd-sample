@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Castle.Facilities.TypedFactory;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using Castle.Windsor.Installer;
+using CoreDdd.Domain.Repositories;
 using CoreDdd.Nhibernate.Configurations;
-using CoreDdd.Nhibernate.Repositories;
+using CoreDdd.Nhibernate.Register.Castle;
 using CoreDdd.Nhibernate.UnitOfWorks;
 using CoreDdd.Queries;
+using CoreDdd.Register.Castle;
 using CoreDddSampleConsoleApp.Domain;
-using CoreDddSampleConsoleApp.Dtos;
 
 namespace CoreDddSampleConsoleApp.Samples.Query
 {
-    public class QueryWithIoCContainerSample
+    public class QueryWithIoCContainerAndQueryExecutorDependencyInjectionSample
     {
         public async Task QueryShipsByName()
         {
@@ -21,25 +22,23 @@ namespace CoreDddSampleConsoleApp.Samples.Query
             _RegisterComponents(ioCContainer);
 
             var unitOfWork = ioCContainer.Resolve<NhibernateUnitOfWork>();
+            var shipRepository = ioCContainer.Resolve<IRepository<Ship>>();
 
             try
             {
                 unitOfWork.BeginTransaction();
-                
+
                 try
                 {
-                    var queryExecutor = ioCContainer.Resolve<IQueryExecutor>();
-                    var shipRepository = new NhibernateRepository<Ship>(unitOfWork);
-
                     var ship = new Ship("lady starlight", tonnage: 10m);
                     await shipRepository.SaveAsync(ship);
 
                     unitOfWork.Flush();
 
-                    var getShipByNameQuery = new GetShipsByNameQuery { ShipName = "lady" };
-                    var shipDtos = await queryExecutor.ExecuteAsync<GetShipsByNameQuery, ShipDto>(getShipByNameQuery);
+                    var controller = ioCContainer.Resolve<ShipController>();
+                    var shipDtos = await controller.GetShipsByNameAsync(shipName: "lady");
 
-                    Console.WriteLine($"Ship by name query was executed by query executor resolved from IoC container. Number of ships queried: {shipDtos.Count()}");
+                    Console.WriteLine($"Ship by name query was executed by query executor injected into ShipController. Number of ships queried: {shipDtos.Count()}");
 
                     unitOfWork.Commit();
                 }
@@ -59,13 +58,14 @@ namespace CoreDddSampleConsoleApp.Samples.Query
 
         private void _RegisterComponents(WindsorContainer ioCContainer)
         {
-            ioCContainer.AddFacility<TypedFactoryFacility>();
+            NhibernateInstaller.SetUnitOfWorkLifeStyle(x => x.PerThread);
+
+            ioCContainer.Install(
+                FromAssembly.Containing<QueryAndCommandExecutorInstaller>(),
+                FromAssembly.Containing<NhibernateInstaller>()
+            );
 
             ioCContainer.Register(
-                Component.For<IQueryHandlerFactory>().AsFactory(),
-                Component.For<IQueryExecutor>() // register query executor
-                    .ImplementedBy<QueryExecutor>()
-                    .LifeStyle.Transient,
                 Classes
                     .FromAssemblyContaining<GetShipsByNameQuery>() // register all query handlers in this assembly
                     .BasedOn(typeof(IQueryHandler<>))
@@ -74,8 +74,7 @@ namespace CoreDddSampleConsoleApp.Samples.Query
                 Component.For<INhibernateConfigurator>() // register nhibernate configurator
                     .ImplementedBy<CoreDddSampleNhibernateConfigurator>()
                     .LifeStyle.Singleton,
-                Component.For<NhibernateUnitOfWork>() // register nhibernate unit of work
-                    .LifeStyle.PerThread
+                Component.For<ShipController>()
             );
         }
     }

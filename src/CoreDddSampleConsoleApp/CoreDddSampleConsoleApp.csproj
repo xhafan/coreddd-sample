@@ -25,6 +25,8 @@
     <PackageReference Include="CoreDdd.Nhibernate" Version="3.0.21" />
     <PackageReference Include="CoreIoC" Version="3.0.21" />
     <PackageReference Include="CoreIoC.Castle" Version="3.0.21" />
+    <PackageReference Include="CoreDdd.Nhibernate.Register.Castle" Version="3.0.21" />
+    <PackageReference Include="CoreDdd.Register.Castle" Version="3.0.21" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Repolinks-Debug'">
@@ -32,6 +34,8 @@
     <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.Nhibernate\CoreDdd.Nhibernate.csproj" />
     <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreIoC\CoreIoC.csproj" />
     <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreIoC.Castle\CoreIoC.Castle.csproj" />
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.Nhibernate.Register.Castle\CoreDdd.Nhibernate.Register.Castle.csproj" />
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.Register.Castle\CoreDdd.Register.Castle.csproj" />
   </ItemGroup>
 
   <ItemGroup>
