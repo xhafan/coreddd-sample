@@ -23,8 +23,6 @@ namespace CoreDddSampleConsoleApp.Samples.Query
             var unitOfWork = ioCContainer.Resolve<NhibernateUnitOfWork>();
             var shipRepository = new NhibernateRepository<Ship>(unitOfWork);
 
-            var queryExecutor = ioCContainer.Resolve<IQueryExecutor>();
-
             try
             {
                 unitOfWork.BeginTransaction();
@@ -36,6 +34,7 @@ namespace CoreDddSampleConsoleApp.Samples.Query
 
                     unitOfWork.Flush();
 
+                    var queryExecutor = ioCContainer.Resolve<IQueryExecutor>();
                     var getShipByNameQuery = new GetShipsByNameQuery { ShipName = "lady" };
                     var shipDtos = await queryExecutor.ExecuteAsync<GetShipsByNameQuery, ShipDto>(getShipByNameQuery);
 
@@ -62,7 +61,7 @@ namespace CoreDddSampleConsoleApp.Samples.Query
             ioCContainer.AddFacility<TypedFactoryFacility>();
 
             ioCContainer.Register(
-                Component.For<IQueryHandlerFactory>().AsFactory(),
+                Component.For<IQueryHandlerFactory>().AsFactory(), // register query handler factory (no real factory implementation needed :)
                 Component.For<IQueryExecutor>() // register query executor
                     .ImplementedBy<QueryExecutor>()
                     .LifeStyle.Transient,

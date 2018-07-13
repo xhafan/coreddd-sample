@@ -18,7 +18,6 @@ namespace CoreDddSampleConsoleApp.Samples.Query
                 unitOfWork.BeginTransaction();
 
                 var shipRepository = new NhibernateRepository<Ship>(unitOfWork);
-                var queryExecutor = new QueryExecutor(new FakeQueryHandlerFactory(unitOfWork));
 
                 try
                 {
@@ -27,6 +26,7 @@ namespace CoreDddSampleConsoleApp.Samples.Query
 
                     unitOfWork.Flush();
 
+                    var queryExecutor = new QueryExecutor(new FakeQueryHandlerFactory(unitOfWork));
                     var getShipByNameQuery = new GetShipsByNameQuery {ShipName = "lady"};
                     var shipDtos = await queryExecutor.ExecuteAsync<GetShipsByNameQuery, ShipDto>(getShipByNameQuery);
 
