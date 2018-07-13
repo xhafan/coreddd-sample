@@ -5,12 +5,11 @@ using CoreDddSampleConsoleApp.Dtos;
 
 namespace CoreDddSampleConsoleApp.Samples.Query
 {
-    // An example controller similar to ASP.NET Core controller to demonstrate query executor usage
-    public class ShipController
+    public class ShipService
     {
         private readonly IQueryExecutor _queryExecutor;
 
-        public ShipController(IQueryExecutor queryExecutor)
+        public ShipService(IQueryExecutor queryExecutor)
         {
             _queryExecutor = queryExecutor;
         }
