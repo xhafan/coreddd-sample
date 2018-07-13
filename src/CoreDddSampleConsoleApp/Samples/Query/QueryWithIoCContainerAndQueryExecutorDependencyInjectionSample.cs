@@ -35,8 +35,8 @@ namespace CoreDddSampleConsoleApp.Samples.Query
 
                     unitOfWork.Flush();
 
-                    var controller = ioCContainer.Resolve<ShipService>();
-                    var shipDtos = await controller.GetShipsByNameAsync(shipName: "lady");
+                    var shipService = ioCContainer.Resolve<ShipService>();
+                    var shipDtos = await shipService.GetShipsByNameAsync(shipName: "lady");
 
                     Console.WriteLine($"Ship by name query was executed by query executor injected into ShipService. Number of ships queried: {shipDtos.Count()}");
 
