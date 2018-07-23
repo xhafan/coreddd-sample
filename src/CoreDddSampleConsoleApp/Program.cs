@@ -21,6 +21,7 @@ namespace CoreDddSampleConsoleApp
                 await new MultipleQueriesSample().ExecuteMultipleQueries(nhibernateConfigurator);
 
                 await new CommandSample().CreateNewShip(nhibernateConfigurator);
+                await new CommandWithCommandExecutorSample().CreateNewShip(nhibernateConfigurator);
 
             }
 
