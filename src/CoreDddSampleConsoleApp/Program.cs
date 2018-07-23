@@ -30,6 +30,7 @@ namespace CoreDddSampleConsoleApp
 
             await new CommandWithIoCContainerSample().CreateNewShip();
             await new CommandWithIoCContainerAndCommandExecutorDependencyInjectionSample().CreateNewShip();
+            await new CommandWithDomainBehaviourExecutedOnExistingAggregateRootEntitySample().UpdateShipData();
         }
     }
 }

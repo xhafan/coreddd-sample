@@ -23,5 +23,16 @@ namespace CoreDddSampleConsoleApp.Samples.Command
 
             return generatedShipId;
         }
+
+        public async Task UpdateShipData(int shipId, string shipName, decimal tonnage)
+        {
+            var updateShipDataCommand = new UpdateShipDataCommand
+            {
+                ShipId = shipId,
+                ShipName = shipName,
+                Tonnage = tonnage
+            };
+            await _commandExecutor.ExecuteAsync(updateShipDataCommand);
+        }
     }
 }

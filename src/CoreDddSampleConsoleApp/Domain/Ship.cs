@@ -17,5 +17,11 @@ namespace CoreDddSampleConsoleApp.Domain
                                                            // - https://stackoverflow.com/a/848116/379279
         public virtual decimal Tonnage { get; protected set; } // protected modifier on set needed by nhibernate
                                                                // - cannot be private
+
+        public virtual void UpdateData(string name, decimal tonnage)
+        {
+            Name = name;
+            Tonnage = tonnage;
+        }
     }
 }
