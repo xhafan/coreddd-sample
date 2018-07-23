@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using CoreDddSampleConsoleApp.Samples.Command;
 using CoreDddSampleConsoleApp.Samples.MultipleQueries;
 using CoreDddSampleConsoleApp.Samples.PersistNewEntity;
 using CoreDddSampleConsoleApp.Samples.Query;
@@ -18,6 +19,9 @@ namespace CoreDddSampleConsoleApp
                 await new QuerySample().QueryShipsByName(nhibernateConfigurator);
                 await new QueryWithQueryExecutorSample().QueryShipsByName(nhibernateConfigurator);
                 await new MultipleQueriesSample().ExecuteMultipleQueries(nhibernateConfigurator);
+
+                await new CommandSample().CreateNewShip(nhibernateConfigurator);
+
             }
 
             await new QueryWithIoCContainerSample().QueryShipsByName();
