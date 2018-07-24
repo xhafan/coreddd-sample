@@ -36,11 +36,11 @@ namespace CoreDddSampleConsoleApp.Samples.Command
 
                     Console.WriteLine("Update ship data command was executed.");
 
-                    unitOfWork.Commit();
+                    await unitOfWork.CommitAsync();
                 }
                 catch
                 {
-                    unitOfWork.Rollback();
+                    await unitOfWork.RollbackAsync();
                     throw;
                 }
             }

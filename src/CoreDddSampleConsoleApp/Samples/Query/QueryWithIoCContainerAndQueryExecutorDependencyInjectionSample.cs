@@ -40,11 +40,11 @@ namespace CoreDddSampleConsoleApp.Samples.Query
 
                     Console.WriteLine($"Ship by name query was executed by query executor injected into ShipService. Number of ships queried: {shipDtos.Count()}");
 
-                    unitOfWork.Commit();
+                    await unitOfWork.CommitAsync();
                 }
                 catch
                 {
-                    unitOfWork.Rollback();
+                    await unitOfWork.RollbackAsync();
                     throw;
                 }
             }

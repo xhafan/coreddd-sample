@@ -68,11 +68,11 @@ namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
                     Console.WriteLine($"Policies by terms query was executed. Number of policy dtos queried: {policyDtos.Count()}");
                     Console.WriteLine($"Ship policy items by ship name query was executed. Number of ship policy item dtos queried: {shipPolicyItemDtos.Count()}");
 
-                    unitOfWork.Commit();
+                    await unitOfWork.CommitAsync();
                 }
                 catch
                 {
-                    unitOfWork.Rollback();
+                    await unitOfWork.RollbackAsync();
                     throw;
                 }
             }

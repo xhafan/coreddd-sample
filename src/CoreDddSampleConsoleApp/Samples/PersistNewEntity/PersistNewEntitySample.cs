@@ -21,13 +21,13 @@ namespace CoreDddSampleConsoleApp.Samples.PersistNewEntity
                     var ship = new Ship("ship name", tonnage: 10m);
                     await shipRepository.SaveAsync(ship);
 
-                    unitOfWork.Commit();
+                    await unitOfWork.CommitAsync();
 
                     Console.WriteLine("Ship entity was persisted.");
                 }
                 catch
                 {
-                    unitOfWork.Rollback();
+                    await unitOfWork.RollbackAsync();
                     throw;
                 }
             }

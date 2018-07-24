@@ -31,11 +31,11 @@ namespace CoreDddSampleConsoleApp.Samples.Command
 
                     Console.WriteLine($"Create new ship command was executed by command executor injected into ShipService. Generated ship id: {generatedShipId}");
 
-                    unitOfWork.Commit();
+                    await unitOfWork.CommitAsync();
                 }
                 catch
                 {
-                    unitOfWork.Rollback();
+                    await unitOfWork.RollbackAsync();
                     throw;
                 }
             }
