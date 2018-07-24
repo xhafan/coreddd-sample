@@ -1,6 +1,6 @@
 ﻿using CoreDdd.Queries;
 
-namespace CoreDddSampleConsoleApp.Samples.MultipleQueries
+namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
 {
     public class GetPoliciesByTermsQuery : IQuery
     {
