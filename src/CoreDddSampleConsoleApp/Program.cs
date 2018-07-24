@@ -27,6 +27,7 @@ namespace CoreDddSampleConsoleApp
 
             await new QueryWithIoCContainerSample().QueryShipsByName();
             await new QueryWithIoCContainerAndQueryExecutorDependencyInjectionSample().QueryShipsByName();
+            await new QueryWithBatchingSample().QueryShipsByMultipleNames();
 
             await new CommandWithIoCContainerSample().CreateNewShip();
             await new CommandWithIoCContainerAndCommandExecutorDependencyInjectionSample().CreateNewShip();
