@@ -3,7 +3,7 @@ using CoreDdd.Commands;
 using CoreDdd.Domain.Repositories;
 using CoreDddSampleConsoleApp.Domain;
 
-namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
+namespace CoreDddSampleConsoleApp.Samples.Ddd
 {
     public class CreateNewPolicyCommandHandler : BaseCommandHandler<CreateNewPolicyCommand>
     {

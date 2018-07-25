@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using CoreDdd.Commands;
 
-namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
+namespace CoreDddSampleConsoleApp.Samples.Ddd
 {
     public class PolicyHolderService
     {

@@ -2,7 +2,7 @@
 using CoreDdd.Commands;
 using CoreDddSampleConsoleApp.Samples.Command;
 
-namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
+namespace CoreDddSampleConsoleApp.Samples.Ddd
 {
     public class ShipService
     {

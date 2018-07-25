@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using CoreDddSampleConsoleApp.Samples.Command;
-using CoreDddSampleConsoleApp.Samples.ComplexDdd;
+using CoreDddSampleConsoleApp.Samples.Ddd;
 using CoreDddSampleConsoleApp.Samples.PersistNewEntity;
 using CoreDddSampleConsoleApp.Samples.Query;
 

@@ -5,7 +5,7 @@ using CoreDdd.Commands;
 using CoreDdd.Queries;
 using CoreDddSampleConsoleApp.Dtos;
 
-namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
+namespace CoreDddSampleConsoleApp.Samples.Ddd
 {
     public class PolicyService
     {

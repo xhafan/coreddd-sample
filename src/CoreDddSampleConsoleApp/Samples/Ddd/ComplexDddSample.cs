@@ -12,7 +12,7 @@ using CoreDdd.Queries;
 using CoreDdd.Register.Castle;
 using CoreDddSampleConsoleApp.Samples.Command;
 
-namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
+namespace CoreDddSampleConsoleApp.Samples.Ddd
 {
     public class ComplexDddSample
     {

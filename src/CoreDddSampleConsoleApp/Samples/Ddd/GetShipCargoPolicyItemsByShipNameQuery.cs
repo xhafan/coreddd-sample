@@ -1,6 +1,6 @@
 ﻿using CoreDdd.Queries;
 
-namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
+namespace CoreDddSampleConsoleApp.Samples.Ddd
 {
     public class GetShipCargoPolicyItemsByShipNameQuery : IQuery
     {

@@ -3,7 +3,7 @@ using CoreDdd.Nhibernate.UnitOfWorks;
 using CoreDddSampleConsoleApp.Dtos;
 using NHibernate;
 
-namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
+namespace CoreDddSampleConsoleApp.Samples.Ddd
 {
     public class GetShipCargoPolicyItemsByShipNameQueryHandler : BaseQueryOverHandler<GetShipCargoPolicyItemsByShipNameQuery>
     {
