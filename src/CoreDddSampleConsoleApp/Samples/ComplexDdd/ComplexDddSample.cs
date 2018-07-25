@@ -7,12 +7,9 @@ using Castle.Windsor.Installer;
 using CoreDdd.Commands;
 using CoreDdd.Nhibernate.Configurations;
 using CoreDdd.Nhibernate.Register.Castle;
-using CoreDdd.Nhibernate.Repositories;
 using CoreDdd.Nhibernate.UnitOfWorks;
 using CoreDdd.Queries;
 using CoreDdd.Register.Castle;
-using CoreDddSampleConsoleApp.Builders;
-using CoreDddSampleConsoleApp.Domain;
 using CoreDddSampleConsoleApp.Samples.Command;
 
 namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
@@ -83,43 +80,6 @@ namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
             }
 
             ioCContainer.Dispose();
-        }
-
-        private async Task _BuildAndSaveTwoPolicies(NhibernateUnitOfWork unitOfWork)
-        {
-            var policyHolderRepository = new NhibernateRepository<PolicyHolder>(unitOfWork);
-            var policyShipRepository = new NhibernateRepository<Ship>(unitOfWork);
-            var policyRepository = new NhibernateRepository<Policy>(unitOfWork);
-
-
-            var policyHolder = new PolicyHolderBuilder().Build();
-            await policyHolderRepository.SaveAsync(policyHolder);
-
-
-            var ship = new ShipBuilder().WithName("some ship name").Build();
-            await policyShipRepository.SaveAsync(ship);
-
-
-            var policyOne = new PolicyBuilder()
-                .WithPolicyHolder(policyHolder)
-                .WithTerms("policy one terms")
-                .Build();
-            await policyRepository.SaveAsync(policyOne);
-
-
-            var policyTwoWithShip = new PolicyBuilder()
-                .WithPolicyHolder(policyHolder)
-                .WithShipCargoPolicyItems(new ShipCargoPolicyItemArgs
-                {
-                    Ship = ship,
-                    InsuredTonnage = 7m,
-                    RatePerTonnage = 5m
-                })
-                .Build();
-            await policyRepository.SaveAsync(policyTwoWithShip);
-
-
-            unitOfWork.Flush();
         }
 
         private void _RegisterComponents(WindsorContainer ioCContainer)
