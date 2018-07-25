@@ -1,1 +1,1 @@
-# coreddd-sample
+Samples for [CoreDdd](https://github.com/xhafan/coreddd) .NET library. Needs [Visual Studio 2017](https://visualstudio.microsoft.com/downloads) or higher, and [.NET Core 2.1](https://www.microsoft.com/net/download) or higher.
