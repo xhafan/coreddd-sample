@@ -8,7 +8,6 @@ using CoreDdd.Domain.Repositories;
 using CoreDdd.Nhibernate.Configurations;
 using CoreDdd.Nhibernate.Repositories;
 using CoreDdd.Nhibernate.UnitOfWorks;
-using CoreDddSampleConsoleApp.Domain;
 
 namespace CoreDddSampleConsoleApp.Samples.Command
 {
@@ -20,7 +19,6 @@ namespace CoreDddSampleConsoleApp.Samples.Command
             _RegisterComponents(ioCContainer);
 
             var unitOfWork = ioCContainer.Resolve<NhibernateUnitOfWork>();
-            var shipRepository = new NhibernateRepository<Ship>(unitOfWork);
 
             try
             {

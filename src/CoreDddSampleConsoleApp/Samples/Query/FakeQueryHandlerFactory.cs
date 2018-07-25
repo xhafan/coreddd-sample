@@ -4,7 +4,7 @@ using CoreDdd.Queries;
 
 namespace CoreDddSampleConsoleApp.Samples.Query
 {
-    // This FakeQueryHandlerFactory is implemented by IoC container in the real app. See the example todo
+    // This FakeQueryHandlerFactory would be implemented by IoC container out of the box in the real app. See QueryWithIoCContainerSample
     public class FakeQueryHandlerFactory : IQueryHandlerFactory
     {
         private readonly NhibernateUnitOfWork _unitOfWork;

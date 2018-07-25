@@ -6,7 +6,7 @@ using CoreDddSampleConsoleApp.Domain;
 
 namespace CoreDddSampleConsoleApp.Samples.Command
 {
-    // This FakeCommandHandlerFactory is implemented by IoC container in the real app. See the example todo
+    // This FakeCommandHandlerFactory would be implemented by IoC container out of the box in the real app. See CommandWithIoCContainerSample
     public class FakeCommandHandlerFactory : ICommandHandlerFactory
     {
         private readonly NhibernateUnitOfWork _unitOfWork;
