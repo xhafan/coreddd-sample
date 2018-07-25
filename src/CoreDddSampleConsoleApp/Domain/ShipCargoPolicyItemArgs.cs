@@ -1,8 +1,8 @@
 ﻿namespace CoreDddSampleConsoleApp.Domain
 {
-    public class TruckPolicyItemArgs
+    public class ShipCargoPolicyItemArgs
     {
-        public Truck Truck { get; set; }
+        public Ship Ship { get; set; }
         public decimal InsuredTonnage { get; set; }
         public decimal RatePerTonnage { get; set; }
     }

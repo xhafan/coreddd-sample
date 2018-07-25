@@ -3,9 +3,9 @@ using FluentNHibernate.Automapping.Alterations;
 
 namespace CoreDddSampleConsoleApp.Dtos
 {
-    public class ShipPolicyItemDtoAutoMap : IAutoMappingOverride<ShipPolicyItemDto>
+    public class ShipCargoPolicyItemDtoAutoMap : IAutoMappingOverride<ShipCargoPolicyItemDto>
     {
-        public void Override(AutoMapping<ShipPolicyItemDto> mapping)
+        public void Override(AutoMapping<ShipCargoPolicyItemDto> mapping)
         {
             mapping.Id(x => x.PolicyItemId);
         }

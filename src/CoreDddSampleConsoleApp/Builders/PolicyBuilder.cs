@@ -9,8 +9,8 @@ namespace CoreDddSampleConsoleApp.Builders
         private DateTime _startDate = new DateTime(2018, 7, 9, 0, 0, 0);
         private DateTime _endDate = new DateTime(2019, 7, 8, 23, 59, 59);
         private string _terms = "terms";
-        private ShipPolicyItemArgs[] _shipPolicyItemArgses;
-        private TruckPolicyItemArgs[] _truckPolicyItemArgses;
+        private ShipCargoPolicyItemArgs[] _shipCargoPolicyItemArgses;
+        private TruckCargoPolicyItemArgs[] _truckCargoPolicyItemArgses;
 
         public PolicyBuilder WithPolicyHolder(PolicyHolder policyHolder)
         {
@@ -36,33 +36,33 @@ namespace CoreDddSampleConsoleApp.Builders
             return this;
         }
 
-        public PolicyBuilder WithShipPolicyItems(params ShipPolicyItemArgs[] shipPolicyItemArgses)
+        public PolicyBuilder WithShipCargoPolicyItems(params ShipCargoPolicyItemArgs[] shipCargoPolicyItemArgses)
         {
-            _shipPolicyItemArgses = shipPolicyItemArgses;
+            _shipCargoPolicyItemArgses = shipCargoPolicyItemArgses;
             return this;
         }
 
-        public PolicyBuilder WithTruckPolicyItems(params TruckPolicyItemArgs[] truckPolicyItemArgses)
+        public PolicyBuilder WithTruckCargoPolicyItems(params TruckCargoPolicyItemArgs[] truckCargoPolicyItemArgses)
         {
-            _truckPolicyItemArgses = truckPolicyItemArgses;
+            _truckCargoPolicyItemArgses = truckCargoPolicyItemArgses;
             return this;
         }
 
         public Policy Build()
         {
             var policy = new Policy(_policyHolder, _startDate, _endDate, _terms);
-            if (_shipPolicyItemArgses != null)
+            if (_shipCargoPolicyItemArgses != null)
             {
-                foreach (var shipPolicyItemArgs in _shipPolicyItemArgses)
+                foreach (var shipCargoPolicyItemArgs in _shipCargoPolicyItemArgses)
                 {
-                    policy.AddShipPolicyItem(shipPolicyItemArgs);
+                    policy.AddShipCargoPolicyItem(shipCargoPolicyItemArgs);
                 }
             }
-            if (_truckPolicyItemArgses != null)
+            if (_truckCargoPolicyItemArgses != null)
             {
-                foreach (var truckPolicyItemArgs in _truckPolicyItemArgses)
+                foreach (var truckCargoPolicyItemArgs in _truckCargoPolicyItemArgses)
                 {
-                    policy.AddTruckPolicyItem(truckPolicyItemArgs);
+                    policy.AddTruckCargoPolicyItem(truckCargoPolicyItemArgs);
                 }
             }
             return policy;

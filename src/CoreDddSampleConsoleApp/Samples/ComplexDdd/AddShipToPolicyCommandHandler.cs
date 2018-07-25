@@ -24,7 +24,7 @@ namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
             var ship = await _shipRepository.GetAsync(command.ShipId);
             var policy = await _policyRepository.GetAsync(command.PolicyId);
 
-            policy.AddShipPolicyItem(new ShipPolicyItemArgs
+            policy.AddShipCargoPolicyItem(new ShipCargoPolicyItemArgs
             {
                 Ship = ship,
                 InsuredTonnage = command.InsuredTonnage,

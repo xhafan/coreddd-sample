@@ -59,9 +59,10 @@ namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
             });
         }
 
-        public async Task<(IEnumerable<PolicyDto> policiesByTerm, IEnumerable<ShipPolicyItemDto> shipPolicyItemsByShipName)> GetResultFromMultipleQueries(
-            string policyTerms,
-            string shipName
+        public async Task<(IEnumerable<PolicyDto> policiesByTerm, IEnumerable<ShipCargoPolicyItemDto> shipCargoPolicyItemsByShipName)> 
+            GetResultFromMultipleQueries(
+                string policyTerms,
+                string shipName
             )
         {
             var getPoliciesByTermsQuery = new GetPoliciesByTermsQuery { Terms = policyTerms };
@@ -69,12 +70,12 @@ namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
 
             // At this point, GetPoliciesByTermsQuery have not been sent to the DB. Only when the result (policyDtos) is enumerated.
 
-            var getPolicyItemsByShipNameQuery = new GetShipPolicyItemsByShipNameQuery { ShipName = shipName };
-            var shipPolicyItemDtos = await _queryExecutor.ExecuteAsync<GetShipPolicyItemsByShipNameQuery, ShipPolicyItemDto>(getPolicyItemsByShipNameQuery);
+            var getPolicyItemsByShipNameQuery = new GetShipCargoPolicyItemsByShipNameQuery { ShipName = shipName };
+            var shipCargoPolicyItemDtos = await _queryExecutor.ExecuteAsync<GetShipCargoPolicyItemsByShipNameQuery, ShipCargoPolicyItemDto>(getPolicyItemsByShipNameQuery);
 
-            // GetShipPolicyItemsByShipNameQuery was awaited, and that sent both queries to the DB in one go, saving one DB round trip.
+            // GetShipCargoPolicyItemsByShipNameQuery was awaited, and that sent both queries to the DB in one go, saving one DB round trip.
 
-            return (policyDtos, shipPolicyItemDtos);
+            return (policyDtos, shipCargoPolicyItemDtos);
         }      
     }
 }

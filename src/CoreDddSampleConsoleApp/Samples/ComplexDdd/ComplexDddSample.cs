@@ -63,10 +63,11 @@ namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
 
                     unitOfWork.Flush();
 
-                    var (policyDtos, shipPolicyItemDtos) = await policyService.GetResultFromMultipleQueries(policyTerms: "one", shipName: "golden");
+                    var (policyDtos, shipCargoPolicyItemDtos) = await policyService.GetResultFromMultipleQueries(policyTerms: "one", shipName: "golden");
 
                     Console.WriteLine($"Policies by terms query was executed. Number of policy dtos queried: {policyDtos.Count()}");
-                    Console.WriteLine($"Ship policy items by ship name query was executed. Number of ship policy item dtos queried: {shipPolicyItemDtos.Count()}");
+                    Console.WriteLine($"Ship cargo policy items by ship name query was executed. Number of ship cargo policy item dtos queried: " +
+                                      $"{shipCargoPolicyItemDtos.Count()}");
 
                     await unitOfWork.CommitAsync();
                 }
@@ -108,7 +109,7 @@ namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
 
             var policyTwoWithShip = new PolicyBuilder()
                 .WithPolicyHolder(policyHolder)
-                .WithShipPolicyItems(new ShipPolicyItemArgs
+                .WithShipCargoPolicyItems(new ShipCargoPolicyItemArgs
                 {
                     Ship = ship,
                     InsuredTonnage = 7m,

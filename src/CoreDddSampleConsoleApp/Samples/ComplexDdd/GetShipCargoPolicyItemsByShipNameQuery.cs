@@ -2,7 +2,7 @@
 
 namespace CoreDddSampleConsoleApp.Samples.ComplexDdd
 {
-    public class GetShipPolicyItemsByShipNameQuery : IQuery
+    public class GetShipCargoPolicyItemsByShipNameQuery : IQuery
     {
         public string ShipName { get; set; }
 

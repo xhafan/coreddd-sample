@@ -1,6 +1,6 @@
 ﻿namespace CoreDddSampleConsoleApp.Dtos
 {
-    public class ShipPolicyItemDto
+    public class ShipCargoPolicyItemDto
     {
         public int PolicyItemId { get; set; }
         public int PolicyId { get; set; }

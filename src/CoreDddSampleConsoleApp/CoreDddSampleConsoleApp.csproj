@@ -41,7 +41,7 @@
   <ItemGroup>
     <EmbeddedResource Include="DatabaseViews\ShipDto.sql" />
     <EmbeddedResource Include="DatabaseViews\PolicyDto.sql" />
-    <EmbeddedResource Include="DatabaseViews\ShipPolicyItemDto.sql" />
+    <EmbeddedResource Include="DatabaseViews\ShipCargoPolicyItemDto.sql" />
   </ItemGroup>
 
   <ItemGroup>

@@ -30,16 +30,16 @@ namespace CoreDddSampleConsoleApp.Domain
 
         public virtual IEnumerable<PolicyItem> Items => _items;
 
-        public virtual void AddShipPolicyItem(ShipPolicyItemArgs args)
+        public virtual void AddShipCargoPolicyItem(ShipCargoPolicyItemArgs args)
         {
-            var shipPolicyItem = new ShipPolicyItem(args);
-            _items.Add(shipPolicyItem);
+            var shipCargoPolicyItem = new ShipCargoPolicyItem(args);
+            _items.Add(shipCargoPolicyItem);
         }
 
-        public virtual void AddTruckPolicyItem(TruckPolicyItemArgs args)
+        public virtual void AddTruckCargoPolicyItem(TruckCargoPolicyItemArgs args)
         {
-            var truckPolicyItem = new TruckPolicyItem(args);
-            _items.Add(truckPolicyItem);
+            var truckCargoPolicyItem = new TruckCargoPolicyItem(args);
+            _items.Add(truckCargoPolicyItem);
         }
     }
 }

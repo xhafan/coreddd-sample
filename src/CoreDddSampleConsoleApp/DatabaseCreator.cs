@@ -36,7 +36,7 @@ namespace CoreDddSampleConsoleApp
         {
             await _CreateDatabaseView(connection, "PolicyDto.sql");
             await _CreateDatabaseView(connection, "ShipDto.sql");
-            await _CreateDatabaseView(connection, "ShipPolicyItemDto.sql");
+            await _CreateDatabaseView(connection, "ShipCargoPolicyItemDto.sql");
         }
 
         private async Task _CreateDatabaseView(DbConnection connection, string databaseViewFileName)

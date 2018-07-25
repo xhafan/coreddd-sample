@@ -1,10 +1,10 @@
 ﻿namespace CoreDddSampleConsoleApp.Domain
 {
-    public class ShipPolicyItem : CargoPolicyItem
+    public class ShipCargoPolicyItem : CargoPolicyItem
     {
-        protected ShipPolicyItem() { }
+        protected ShipCargoPolicyItem() { }
 
-        public ShipPolicyItem(ShipPolicyItemArgs args)
+        public ShipCargoPolicyItem(ShipCargoPolicyItemArgs args)
             : base(
                 args.InsuredTonnage, 
                 args.RatePerTonnage
