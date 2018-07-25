@@ -14,7 +14,7 @@ using CoreDddSampleConsoleApp.Samples.Command;
 
 namespace CoreDddSampleConsoleApp.Samples.Ddd
 {
-    public class ComplexDddSample
+    public class DddSample
     {
         public async Task BuildAndPersistPolicyEntitiesAndExecuteDomainBehaviourOnThemAndExecuteQueriesOverThem(
             CoreDddSampleNhibernateConfigurator nhibernateConfigurator

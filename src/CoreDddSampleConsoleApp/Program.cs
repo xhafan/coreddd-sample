@@ -22,7 +22,7 @@ namespace CoreDddSampleConsoleApp
                 await new CommandSample().CreateNewShip(nhibernateConfigurator);
                 await new CommandWithCommandExecutorSample().CreateNewShip(nhibernateConfigurator);
 
-                await new ComplexDddSample().BuildAndPersistPolicyEntitiesAndExecuteDomainBehaviourOnThemAndExecuteQueriesOverThem(nhibernateConfigurator);
+                await new DddSample().BuildAndPersistPolicyEntitiesAndExecuteDomainBehaviourOnThemAndExecuteQueriesOverThem(nhibernateConfigurator);
             }
 
             await new QueryWithIoCContainerSample().QueryShipsByName();
