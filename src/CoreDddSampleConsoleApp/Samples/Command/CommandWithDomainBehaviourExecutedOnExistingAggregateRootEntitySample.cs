@@ -57,7 +57,7 @@ namespace CoreDddSampleConsoleApp.Samples.Command
             NhibernateInstaller.SetUnitOfWorkLifeStyle(x => x.PerThread);
 
             ioCContainer.Install(
-                FromAssembly.Containing<QueryAndCommandExecutorInstaller>(),
+                FromAssembly.Containing<QueryExecutorInstaller>(),
                 FromAssembly.Containing<NhibernateInstaller>()
             );
 
