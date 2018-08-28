@@ -22,7 +22,16 @@ namespace CoreDddSampleConsoleApp
                 await new CommandSample().CreateNewShip(nhibernateConfigurator);
                 await new CommandWithCommandExecutorSample().CreateNewShip(nhibernateConfigurator);
 
-                await new DddSample().BuildAndPersistPolicyEntitiesAndExecuteDomainBehaviourOnThemAndExecuteQueriesOverThem(nhibernateConfigurator);
+                await new DddSample()
+                    .BuildAndPersistPolicyEntitiesAndExecuteDomainBehaviourOnThemAndExecuteQueriesOverThem(
+                        nhibernateConfigurator,
+                        isDelayedDomainEventHandlingEnabled: false // immediate domain event handling when raised
+                        );
+                await new DddSample()
+                    .BuildAndPersistPolicyEntitiesAndExecuteDomainBehaviourOnThemAndExecuteQueriesOverThem(
+                        nhibernateConfigurator,
+                        isDelayedDomainEventHandlingEnabled: true // delayed domain event handling, domain event handlers are executed manually by calling DomainEvents.RaiseDelayedEvents();
+                    );
             }
 
             await new QueryWithIoCContainerSample().QueryShipsByName();

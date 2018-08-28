@@ -19,13 +19,15 @@ namespace CoreDddSampleConsoleApp.Samples.Ddd
     public class DddSample
     {
         public async Task BuildAndPersistPolicyEntitiesAndExecuteDomainBehaviourOnThemAndExecuteQueriesOverThem(
-            CoreDddSampleNhibernateConfigurator nhibernateConfigurator
+            CoreDddSampleNhibernateConfigurator nhibernateConfigurator,
+            bool isDelayedDomainEventHandlingEnabled
             )
         {
             var ioCContainer = new WindsorContainer();
             _RegisterComponents(ioCContainer);
 
-            _InitializeDomainEventsForImmediateHandlingWhenRaised(ioCContainer);
+            _InitializeDomainEvents(ioCContainer, isDelayedDomainEventHandlingEnabled);
+
             _RegisterDomainEventHandlers(ioCContainer);
 
             var unitOfWork = ioCContainer.Resolve<NhibernateUnitOfWork>();
@@ -50,6 +52,11 @@ namespace CoreDddSampleConsoleApp.Samples.Ddd
                     await unitOfWork.RollbackAsync();
                     throw;
                 }
+
+                if (isDelayedDomainEventHandlingEnabled)
+                {
+                    DomainEvents.RaiseDelayedEvents();
+                }
             }
             finally
             {
@@ -59,10 +66,15 @@ namespace CoreDddSampleConsoleApp.Samples.Ddd
             ioCContainer.Dispose();
         }
 
-        private void _InitializeDomainEventsForImmediateHandlingWhenRaised(WindsorContainer ioCContainer)
+        private void _InitializeDomainEvents(WindsorContainer ioCContainer, bool isDelayedDomainEventHandlingEnabled)
         {
             var domainEventHandlerFactory = ioCContainer.Resolve<IDomainEventHandlerFactory>();
-            DomainEvents.Initialize(domainEventHandlerFactory);
+            DomainEvents.Initialize(domainEventHandlerFactory, isDelayedDomainEventHandlingEnabled: isDelayedDomainEventHandlingEnabled);
+
+            if (isDelayedDomainEventHandlingEnabled)
+            {
+                DomainEvents.ResetDelayedEventsStorage();
+            }
         }
 
         private void _RegisterDomainEventHandlers(WindsorContainer ioCContainer)
