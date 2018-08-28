@@ -11,6 +11,7 @@ using CoreDdd.Nhibernate.Register.Castle;
 using CoreDdd.Nhibernate.UnitOfWorks;
 using CoreDdd.Queries;
 using CoreDdd.Register.Castle;
+using CoreDddSampleConsoleApp.Domain;
 using CoreDddSampleConsoleApp.Samples.Command;
 
 namespace CoreDddSampleConsoleApp.Samples.Ddd
@@ -24,8 +25,8 @@ namespace CoreDddSampleConsoleApp.Samples.Ddd
             var ioCContainer = new WindsorContainer();
             _RegisterComponents(ioCContainer);
 
-            var domainEventHandlerFactory = ioCContainer.Resolve<IDomainEventHandlerFactory>();
-            DomainEvents.Initialize(domainEventHandlerFactory);
+            _InitializeDomainEventsForImmediateHandlingWhenRaised(ioCContainer);
+            _RegisterDomainEventHandlers(ioCContainer);
 
             var unitOfWork = ioCContainer.Resolve<NhibernateUnitOfWork>();
 
@@ -56,6 +57,22 @@ namespace CoreDddSampleConsoleApp.Samples.Ddd
             }
 
             ioCContainer.Dispose();
+        }
+
+        private void _InitializeDomainEventsForImmediateHandlingWhenRaised(WindsorContainer ioCContainer)
+        {
+            var domainEventHandlerFactory = ioCContainer.Resolve<IDomainEventHandlerFactory>();
+            DomainEvents.Initialize(domainEventHandlerFactory);
+        }
+
+        private void _RegisterDomainEventHandlers(WindsorContainer ioCContainer)
+        {
+            ioCContainer.Register(
+                Classes
+                    .FromAssemblyContaining<ShipCargoPolicyItemAddedDomainEvent>()
+                    .BasedOn(typeof(IDomainEventHandler<>))
+                    .WithService.FirstInterface()
+                    .Configure(x => x.LifestyleTransient()));
         }
 
         private async Task _CreateEntitiesUsingCommands(
