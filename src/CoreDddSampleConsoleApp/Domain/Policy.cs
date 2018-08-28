@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CoreDdd.Domain;
+using CoreDdd.Domain.Events;
 
 namespace CoreDddSampleConsoleApp.Domain
 {
@@ -34,6 +35,12 @@ namespace CoreDddSampleConsoleApp.Domain
         {
             var shipCargoPolicyItem = new ShipCargoPolicyItem(args);
             _items.Add(shipCargoPolicyItem);
+
+            DomainEvents.RaiseEvent(new ShipCargoPolicyItemAddedDomainEvent
+            {
+                PolicyId = Id,
+                ShipId = args.Ship.Id
+            });
         }
 
         public virtual void AddTruckCargoPolicyItem(TruckCargoPolicyItemArgs args)

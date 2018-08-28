@@ -5,6 +5,7 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 using CoreDdd.Commands;
+using CoreDdd.Domain.Events;
 using CoreDdd.Nhibernate.Configurations;
 using CoreDdd.Nhibernate.Register.Castle;
 using CoreDdd.Nhibernate.UnitOfWorks;
@@ -22,6 +23,9 @@ namespace CoreDddSampleConsoleApp.Samples.Ddd
         {
             var ioCContainer = new WindsorContainer();
             _RegisterComponents(ioCContainer);
+
+            var domainEventHandlerFactory = ioCContainer.Resolve<IDomainEventHandlerFactory>();
+            DomainEvents.Initialize(domainEventHandlerFactory);
 
             var unitOfWork = ioCContainer.Resolve<NhibernateUnitOfWork>();
 
