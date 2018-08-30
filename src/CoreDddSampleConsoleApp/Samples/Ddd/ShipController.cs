@@ -4,11 +4,11 @@ using CoreDddSampleConsoleApp.Samples.Command;
 
 namespace CoreDddSampleConsoleApp.Samples.Ddd
 {
-    public class ShipService
+    public class ShipController
     {
         private readonly ICommandExecutor _commandExecutor;
 
-        public ShipService(ICommandExecutor commandExecutor)
+        public ShipController(ICommandExecutor commandExecutor)
         {
             _commandExecutor = commandExecutor;
         }

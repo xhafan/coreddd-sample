@@ -7,12 +7,12 @@ using CoreDddSampleConsoleApp.Dtos;
 
 namespace CoreDddSampleConsoleApp.Samples.Ddd
 {
-    public class PolicyService
+    public class PolicyController
     {
         private readonly ICommandExecutor _commandExecutor;
         private readonly IQueryExecutor _queryExecutor;
 
-        public PolicyService(
+        public PolicyController(
             ICommandExecutor commandExecutor,
             IQueryExecutor queryExecutor
             )

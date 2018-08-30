@@ -38,12 +38,12 @@ namespace CoreDddSampleConsoleApp.Samples.Ddd
 
                 try
                 {
-                    var shipService = ioCContainer.Resolve<ShipService>();
-                    var policyHolderService = ioCContainer.Resolve<PolicyHolderService>();
-                    var policyService = ioCContainer.Resolve<PolicyService>();
+                    var shipController = ioCContainer.Resolve<ShipController>();
+                    var policyHolderController = ioCContainer.Resolve<PolicyHolderController>();
+                    var policyController = ioCContainer.Resolve<PolicyController>();
 
-                    await _CreateEntitiesUsingCommands(shipService, policyHolderService, policyService, unitOfWork);
-                    await _QueryOverCreatedEntities(policyService);
+                    await _CreateEntitiesUsingCommands(shipController, policyHolderController, policyController, unitOfWork);
+                    await _QueryOverCreatedEntities(policyController);
 
                     await unitOfWork.CommitAsync();
                 }
@@ -88,29 +88,29 @@ namespace CoreDddSampleConsoleApp.Samples.Ddd
         }
 
         private async Task _CreateEntitiesUsingCommands(
-            ShipService shipService, 
-            PolicyHolderService policyHolderService,
-            PolicyService policyService, 
+            ShipController shipController, 
+            PolicyHolderController policyHolderController,
+            PolicyController policyController, 
             NhibernateUnitOfWork nhibernateUnitOfWork
             )
         {
-            var shipOneId = await shipService.CreateNewShipAsync("lady star", 10m);
-            var shipTwoId = await shipService.CreateNewShipAsync("golden sea", 20m);
-            var newPolicyHolderId = await policyHolderService.CreateNewPolicyHolderAsync("Policy holder name");
+            var shipOneId = await shipController.CreateNewShipAsync("lady star", 10m);
+            var shipTwoId = await shipController.CreateNewShipAsync("golden sea", 20m);
+            var newPolicyHolderId = await policyHolderController.CreateNewPolicyHolderAsync("Policy holder name");
 
             var today = DateTime.Today;
             var todayPlusOneYear = today.AddYears(1);
 
-            var policyOneId = await policyService.CreateNewPolicyAsync(
+            var policyOneId = await policyController.CreateNewPolicyAsync(
                 policyHolderId: newPolicyHolderId,
                 startDate: today,
                 endDate: todayPlusOneYear,
                 terms: "policy one terms"
             );
-            await policyService.AddShipToPolicyAsync(policyOneId, shipOneId, insuredTonnage: 8m, ratePerTonnage: 5m);
-            await policyService.AddShipToPolicyAsync(policyOneId, shipTwoId, insuredTonnage: 18m, ratePerTonnage: 6m);
+            await policyController.AddShipToPolicyAsync(policyOneId, shipOneId, insuredTonnage: 8m, ratePerTonnage: 5m);
+            await policyController.AddShipToPolicyAsync(policyOneId, shipTwoId, insuredTonnage: 18m, ratePerTonnage: 6m);
 
-            var policyTwoId = await policyService.CreateNewPolicyAsync(
+            var policyTwoId = await policyController.CreateNewPolicyAsync(
                 policyHolderId: newPolicyHolderId,
                 startDate: today,
                 endDate: todayPlusOneYear,
@@ -120,10 +120,10 @@ namespace CoreDddSampleConsoleApp.Samples.Ddd
             nhibernateUnitOfWork.Flush();
         }
 
-        private async Task _QueryOverCreatedEntities(PolicyService policyService)
+        private async Task _QueryOverCreatedEntities(PolicyController policyController)
         {
             var (policyDtos, shipCargoPolicyItemDtos) =
-                await policyService.GetResultFromMultipleQueries(policyTerms: "one", shipName: "golden");
+                await policyController.GetResultFromMultipleQueries(policyTerms: "one", shipName: "golden");
 
             Console.WriteLine($"Policies by terms query was executed. Number of policy dtos queried: {policyDtos.Count()}");
             Console.WriteLine(
@@ -154,9 +154,9 @@ namespace CoreDddSampleConsoleApp.Samples.Ddd
                 Component.For<INhibernateConfigurator>() // register nhibernate configurator
                     .ImplementedBy<CoreDddSampleNhibernateConfigurator>()
                     .LifeStyle.Singleton,
-                Component.For<ShipService>(), // register ship service to get query executor and command executor injected into the constructor
-                Component.For<PolicyHolderService>(), // register policy holder service to get query executor and command executor injected into the constructor
-                Component.For<PolicyService>() // register policy service to get query executor and command executor injected into the constructor
+                Component.For<ShipController>(), // register ship controller to get query executor and command executor injected into the constructor
+                Component.For<PolicyHolderController>(), // register policy holder controller to get query executor and command executor injected into the constructor
+                Component.For<PolicyController>() // register policy controller to get query executor and command executor injected into the constructor
             );
         }
     }

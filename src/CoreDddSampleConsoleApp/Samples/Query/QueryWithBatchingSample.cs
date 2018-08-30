@@ -38,10 +38,10 @@ namespace CoreDddSampleConsoleApp.Samples.Query
 
                     unitOfWork.Flush();
 
-                    var shipService = ioCContainer.Resolve<ShipService>();
-                    var shipDtos = await shipService.GetShipsByMultipleNames(shipNameOne: "lady", shipNameTwo: "sea");
+                    var shipController = ioCContainer.Resolve<ShipController>();
+                    var shipDtos = await shipController.GetShipsByMultipleNames(shipNameOne: "lady", shipNameTwo: "sea");
 
-                    Console.WriteLine($"Two ship by name queries were executed by query executor injected into ShipService. Number of ships queried: {shipDtos.Count()}");
+                    Console.WriteLine($"Two ship by name queries were executed by query executor injected into ShipController. Number of ships queried: {shipDtos.Count()}");
 
                     await unitOfWork.CommitAsync();
                 }
@@ -77,7 +77,7 @@ namespace CoreDddSampleConsoleApp.Samples.Query
                 Component.For<INhibernateConfigurator>() // register nhibernate configurator
                     .ImplementedBy<CoreDddSampleNhibernateConfigurator>()
                     .LifeStyle.Singleton,
-                Component.For<ShipService>() // register ship service to get query executor injected into the constructor
+                Component.For<ShipController>() // register ship controller to get query executor injected into the constructor
             );
         }
     }

@@ -26,10 +26,10 @@ namespace CoreDddSampleConsoleApp.Samples.Command
 
                 try
                 {
-                    var shipService = ioCContainer.Resolve<ShipService>();
-                    var generatedShipId = await shipService.CreateNewShipAsync(shipName: "lady", tonnage: 10m);
+                    var shipController = ioCContainer.Resolve<ShipController>();
+                    var generatedShipId = await shipController.CreateNewShipAsync(shipName: "lady", tonnage: 10m);
 
-                    Console.WriteLine($"Create new ship command was executed by command executor injected into ShipService. Generated ship id: {generatedShipId}");
+                    Console.WriteLine($"Create new ship command was executed by command executor injected into ShipController. Generated ship id: {generatedShipId}");
 
                     await unitOfWork.CommitAsync();
                 }
@@ -65,7 +65,7 @@ namespace CoreDddSampleConsoleApp.Samples.Command
                 Component.For<INhibernateConfigurator>() // register nhibernate configurator
                     .ImplementedBy<CoreDddSampleNhibernateConfigurator>()
                     .LifeStyle.Singleton,
-                Component.For<ShipService>() // register ship service to get command executor injected into the constructor
+                Component.For<ShipController>() // register ship controller to get command executor injected into the constructor
             );
         }
     }

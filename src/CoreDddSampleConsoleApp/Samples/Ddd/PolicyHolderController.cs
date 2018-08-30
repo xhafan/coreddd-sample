@@ -3,11 +3,11 @@ using CoreDdd.Commands;
 
 namespace CoreDddSampleConsoleApp.Samples.Ddd
 {
-    public class PolicyHolderService
+    public class PolicyHolderController
     {
         private readonly ICommandExecutor _commandExecutor;
 
-        public PolicyHolderService(ICommandExecutor commandExecutor)
+        public PolicyHolderController(ICommandExecutor commandExecutor)
         {
             _commandExecutor = commandExecutor;
         }

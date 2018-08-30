@@ -6,11 +6,11 @@ using CoreDddSampleConsoleApp.Dtos;
 
 namespace CoreDddSampleConsoleApp.Samples.Query
 {
-    public class ShipService
+    public class ShipController
     {
         private readonly IQueryExecutor _queryExecutor;
 
-        public ShipService(IQueryExecutor queryExecutor)
+        public ShipController(IQueryExecutor queryExecutor)
         {
             _queryExecutor = queryExecutor;
         }
