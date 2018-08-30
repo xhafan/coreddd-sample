@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Configurations>Debug;Release;Repolinks-Debug</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' != 'Repolinks-Debug'">
+    <PackageReference Include="CoreDdd.AspNetCore" Version="3.0.27" />
+    <PackageReference Include="CoreDdd.Nhibernate" Version="3.0.27" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Repolinks-Debug'">
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.AspNetCore\CoreDdd.AspNetCore.csproj" />
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.Nhibernate\CoreDdd.Nhibernate.csproj" />
+  </ItemGroup>
+
+
+</Project>
