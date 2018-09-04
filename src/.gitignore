@@ -5,3 +5,4 @@ repositoryLinks
 *.user
 CoreDddSample-repolinks.sln
 CoreDddSampleAspNetCoreWebApp/CoreDddSampleAspNetCoreWebApp.db
+packages
