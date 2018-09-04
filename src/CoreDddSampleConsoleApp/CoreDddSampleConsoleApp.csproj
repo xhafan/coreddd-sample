@@ -25,10 +25,10 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' != 'Repolinks-Debug'">
-    <PackageReference Include="CoreDdd" Version="3.0.27" />
-    <PackageReference Include="CoreDdd.Nhibernate" Version="3.0.27" />
-    <PackageReference Include="CoreDdd.Nhibernate.Register.Castle" Version="3.0.27" />
-    <PackageReference Include="CoreDdd.Register.Castle" Version="3.0.27" />
+    <PackageReference Include="CoreDdd" Version="3.0.28" />
+    <PackageReference Include="CoreDdd.Nhibernate" Version="3.0.28" />
+    <PackageReference Include="CoreDdd.Nhibernate.Register.Castle" Version="3.0.28" />
+    <PackageReference Include="CoreDdd.Register.Castle" Version="3.0.28" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Repolinks-Debug'">
