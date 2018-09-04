@@ -10,6 +10,10 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Repolinks-Debug|AnyCPU'">
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
@@ -30,8 +34,6 @@
   <ItemGroup Condition="'$(Configuration)' == 'Repolinks-Debug'">
     <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd\CoreDdd.csproj" />
     <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.Nhibernate\CoreDdd.Nhibernate.csproj" />
-    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreIoC\CoreIoC.csproj" />
-    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreIoC.Castle\CoreIoC.Castle.csproj" />
     <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.Nhibernate.Register.Castle\CoreDdd.Nhibernate.Register.Castle.csproj" />
     <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.Register.Castle\CoreDdd.Register.Castle.csproj" />
   </ItemGroup>

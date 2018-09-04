@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data;
+using CoreDdd.AspNetCore.Middleware;
+using CoreDdd.Nhibernate.Configurations;
+using CoreDdd.Nhibernate.UnitOfWorks;
+using CoreDdd.UnitOfWorks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,6 +37,9 @@ namespace CoreDddAspNetCoreWebApp
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddSingleton<INhibernateConfigurator, CoreDddSampleNhibernateConfigurator>();
+            services.AddScoped<IUnitOfWork, NhibernateUnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +55,9 @@ namespace CoreDddAspNetCoreWebApp
             }
 
             app.UseStaticFiles();
+
+            app.UseMiddleware<UnitOfWorkMicrosoftDependencyInjectionMiddleware>(IsolationLevel.ReadCommitted);
+
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>
