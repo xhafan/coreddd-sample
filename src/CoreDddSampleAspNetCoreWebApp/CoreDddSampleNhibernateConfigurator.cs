@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using CoreDdd.Nhibernate.Configurations;
 
-namespace CoreDddAspNetCoreWebApp
+namespace CoreDddSampleAspNetCoreWebApp
 {
     public class CoreDddSampleNhibernateConfigurator : NhibernateConfigurator
     {

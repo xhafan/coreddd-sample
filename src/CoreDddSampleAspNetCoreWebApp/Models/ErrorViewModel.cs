@@ -1,6 +1,6 @@
 using System;
 
-namespace CoreDddAspNetCoreWebApp.Models
+namespace CoreDddSampleAspNetCoreWebApp.Models
 {
     public class ErrorViewModel
     {
