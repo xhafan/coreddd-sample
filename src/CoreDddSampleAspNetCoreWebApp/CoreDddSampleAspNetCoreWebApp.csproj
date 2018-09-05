@@ -13,11 +13,15 @@
   <ItemGroup Condition="'$(Configuration)' != 'Repolinks-Debug'">
     <PackageReference Include="CoreDdd.AspNetCore" Version="3.0.28" />
     <PackageReference Include="CoreDdd.Nhibernate" Version="3.0.28" />
+    <PackageReference Include="CoreDdd.Nhibernate.Register.DependencyInjection" Version="3.0.28" />
+    <PackageReference Include="CoreDdd.Register.DependencyInjection" Version="3.0.28" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Repolinks-Debug'">
     <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.AspNetCore\CoreDdd.AspNetCore.csproj" />
     <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.Nhibernate\CoreDdd.Nhibernate.csproj" />
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.Nhibernate.Register.DependencyInjection\CoreDdd.Nhibernate.Register.DependencyInjection.csproj" />
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.Register.DependencyInjection\CoreDdd.Register.DependencyInjection.csproj" />
   </ItemGroup>
 
   <ItemGroup>
