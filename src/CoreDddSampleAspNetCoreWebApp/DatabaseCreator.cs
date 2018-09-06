@@ -5,13 +5,13 @@ using System.Reflection;
 using System.Threading.Tasks;
 using NHibernate.Tool.hbm2ddl;
 
-namespace CoreDddSampleConsoleApp
+namespace CoreDddSampleAspNetCoreWebApp
 {
     public class DatabaseCreator
     {
         public async Task CreateDatabase()
         {
-            using (var nhibernateConfigurator = new CoreDddSampleNhibernateConfigurator(shouldMapDtos: false))
+            using (var nhibernateConfigurator = new CoreDddSampleNhibernateConfigurator(shouldMapDtos: false)) // shouldMapDtos: false -> make sure dto database views are not created as tables
             {
                 var configuration = nhibernateConfigurator.GetConfiguration();
                 var connectionString = configuration.Properties["connection.connection_string"];
@@ -33,9 +33,7 @@ namespace CoreDddSampleConsoleApp
 
         private async Task _CreateDtoViews(DbConnection connection)
         {
-            await _CreateDatabaseView(connection, "PolicyDto.sql");
             await _CreateDatabaseView(connection, "ShipDto.sql");
-            await _CreateDatabaseView(connection, "ShipCargoPolicyItemDto.sql");
         }
 
         private async Task _CreateDatabaseView(DbConnection connection, string databaseViewFileName)

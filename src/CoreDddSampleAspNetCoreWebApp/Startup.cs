@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data;
 using CoreDdd.AspNetCore.Middleware;
-using CoreDdd.Nhibernate.Configurations;
+using CoreDdd.Commands;
+using CoreDdd.Domain.Events;
 using CoreDdd.Nhibernate.Register.DependencyInjection;
+using CoreDdd.Queries;
 using CoreDdd.Register.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,9 +40,27 @@ namespace CoreDddSampleAspNetCoreWebApp
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddSingleton<INhibernateConfigurator, CoreDddSampleNhibernateConfigurator>();
-            services.AddCoreDdd();
-            services.AddCoreDddNhibernate();
+            _configureCoreDddServices();
+
+            void _configureCoreDddServices()
+            {
+                services.AddCoreDdd();
+                services.AddCoreDddNhibernate<CoreDddSampleNhibernateConfigurator>();
+
+                // register command handlers, query handlers and domain event handlers from this assembly
+                services.Scan(scan => scan
+                    .FromAssemblyOf<Startup>()
+                    .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<>)))
+                        .AsImplementedInterfaces()
+                        .WithTransientLifetime()
+                    .AddClasses(classes => classes.AssignableTo(typeof(IQueryHandler<>)))
+                        .AsImplementedInterfaces()
+                        .WithTransientLifetime()
+                    .AddClasses(classes => classes.AssignableTo(typeof(IDomainEventHandler<>)))
+                        .AsImplementedInterfaces()
+                        .WithTransientLifetime()
+                    );
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +87,10 @@ namespace CoreDddSampleAspNetCoreWebApp
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+           
+            DomainEvents.Initialize(app.ApplicationServices.GetService<IDomainEventHandlerFactory>());
+
+            new DatabaseCreator().CreateDatabase().Wait();
         }
     }
 }

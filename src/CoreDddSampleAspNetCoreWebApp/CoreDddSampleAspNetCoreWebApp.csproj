@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Scrutor" Version="3.0.1" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.108" />
   </ItemGroup>
 
@@ -32,6 +33,10 @@
 
   <ItemGroup>
     <None Remove="CoreDddSampleAspNetCoreWebApp.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="DatabaseViews\ShipDto.sql" />
   </ItemGroup>
 
 </Project>
