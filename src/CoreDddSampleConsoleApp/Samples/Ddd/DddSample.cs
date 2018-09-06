@@ -133,11 +133,11 @@ namespace CoreDddSampleConsoleApp.Samples.Ddd
 
         private void _RegisterComponents(WindsorContainer ioCContainer)
         {
-            NhibernateInstaller.SetUnitOfWorkLifeStyle(x => x.PerThread);
+            CoreDddNhibernateInstaller.SetUnitOfWorkLifeStyle(x => x.PerThread);
 
             ioCContainer.Install(
-                FromAssembly.Containing<QueryExecutorInstaller>(),
-                FromAssembly.Containing<NhibernateInstaller>()
+                FromAssembly.Containing<CoreDddInstaller>(),
+                FromAssembly.Containing<CoreDddNhibernateInstaller>()
             );
 
             ioCContainer.Register(
