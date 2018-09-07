@@ -1,13 +1,13 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using CoreDdd.Commands;
 using CoreDdd.Queries;
 using CoreDddSampleCommon.Commands;
 using CoreDddSampleCommon.Dtos;
 using CoreDddSampleCommon.Queries;
-using Microsoft.AspNetCore.Mvc;
 
-namespace CoreDddSampleAspNetCoreWebApp.Controllers
+namespace CoreDddSampleAspNetWebApp.Controllers
 {
     public class ShipController : Controller
     {
@@ -37,10 +37,10 @@ namespace CoreDddSampleAspNetCoreWebApp.Controllers
         {
             var shipDtos = (await _queryExecutor.ExecuteAsync<GetShipsByNameQuery, ShipDto>(new GetShipsByNameQuery { ShipName = shipName })).ToList();
 
-            var info = $"Number of ships queried: {shipDtos.Count}\n";
+            var info = $"Number of ships queried: {shipDtos.Count}<br>";
             foreach (var shipDto in shipDtos)
             {
-                info += $"Id: {shipDto.Id}, ship name: {shipDto.Name}\n";
+                info += $"Id: {shipDto.Id}, ship name: {shipDto.Name}<br>";
             }
             return info;
         }

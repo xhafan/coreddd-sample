@@ -1,6 +1,6 @@
 ﻿using CoreDdd.Commands;
 
-namespace CoreDddSampleAspNetCoreWebApp.Commands
+namespace CoreDddSampleCommon.Commands
 {
     public class UpdateShipDataCommand : ICommand
     {

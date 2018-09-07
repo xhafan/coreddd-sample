@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="DatabaseViews\ShipDto.sql" />
+    <ProjectReference Include="..\CoreDddSampleCommon\CoreDddSampleCommon.csproj" />
   </ItemGroup>
 
 </Project>

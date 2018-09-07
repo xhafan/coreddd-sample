@@ -1,4 +1,4 @@
-﻿namespace CoreDddSampleAspNetCoreWebApp.Dtos
+﻿namespace CoreDddSampleCommon.Dtos
 {
     public class ShipDto
     {

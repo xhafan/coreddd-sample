@@ -1,11 +1,11 @@
 ﻿using System.Data.Common;
 using System.Data.SQLite;
 using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
+using CoreDddSampleCommon.Dtos;
 using NHibernate.Tool.hbm2ddl;
 
-namespace CoreDddSampleAspNetCoreWebApp
+namespace CoreDddSampleCommon
 {
     public class DatabaseCreator
     {
@@ -47,8 +47,9 @@ namespace CoreDddSampleAspNetCoreWebApp
 
         private async Task<string> _ReadDatabaseViewEmbeddedResource(string resourceName)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-            using (var stream = assembly.GetManifestResourceStream($"{GetType().Namespace}.DatabaseViews.{resourceName}"))
+            var shipDtoType = typeof(ShipDto);
+            var assembly = shipDtoType.Assembly;
+            using (var stream = assembly.GetManifestResourceStream($"CoreDddSampleCommon.DatabaseViews.{resourceName}"))
             using (var reader = new StreamReader(stream))
             {
                 return await reader.ReadToEndAsync();

@@ -1,9 +1,9 @@
 ﻿using CoreDdd.Nhibernate.Queries;
 using CoreDdd.Nhibernate.UnitOfWorks;
-using CoreDddSampleAspNetCoreWebApp.Dtos;
+using CoreDddSampleCommon.Dtos;
 using NHibernate;
 
-namespace CoreDddSampleAspNetCoreWebApp.Queries
+namespace CoreDddSampleCommon.Queries
 {
     public class GetShipsByNameQueryHandler : BaseQueryOverHandler<GetShipsByNameQuery>
     {

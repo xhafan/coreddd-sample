@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Data;
+﻿using System.Data;
 using CoreDdd.AspNetCore.Middleware;
 using CoreDdd.Commands;
 using CoreDdd.Domain.Events;
 using CoreDdd.Nhibernate.Register.DependencyInjection;
 using CoreDdd.Queries;
 using CoreDdd.Register.DependencyInjection;
+using CoreDddSampleCommon;
+using CoreDddSampleCommon.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -47,9 +45,9 @@ namespace CoreDddSampleAspNetCoreWebApp
                 services.AddCoreDdd();
                 services.AddCoreDddNhibernate<CoreDddSampleNhibernateConfigurator>();
 
-                // register command handlers, query handlers and domain event handlers from this assembly
+                // register command handlers, query handlers and domain event handlers
                 services.Scan(scan => scan
-                    .FromAssemblyOf<Startup>()
+                    .FromAssemblyOf<Ship>()
                     .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<>)))
                         .AsImplementedInterfaces()
                         .WithTransientLifetime()
@@ -87,8 +85,11 @@ namespace CoreDddSampleAspNetCoreWebApp
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-           
-            DomainEvents.Initialize(app.ApplicationServices.GetService<IDomainEventHandlerFactory>());
+
+            DomainEvents.Initialize(
+                app.ApplicationServices.GetService<IDomainEventHandlerFactory>(),
+                isDelayedDomainEventHandlingEnabled: true
+            );
 
             new DatabaseCreator().CreateDatabase().Wait();
         }

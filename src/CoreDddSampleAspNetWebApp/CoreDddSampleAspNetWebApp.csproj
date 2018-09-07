@@ -173,8 +173,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ShipController.cs" />
+    <Compile Include="IoCControllerFactory.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="CoreDddSampleNhibernateConfigurator.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -284,6 +285,12 @@
     <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreUtils\CoreUtils.csproj">
       <Project>{062af7cb-5768-41df-a311-1fbdabe5b281}</Project>
       <Name>CoreUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoreDddSampleCommon\CoreDddSampleCommon.csproj">
+      <Project>{0f717af4-1d26-4d44-ac8d-ea2bc082c59e}</Project>
+      <Name>CoreDddSampleCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
