@@ -5,11 +5,11 @@ using Castle.Windsor;
 
 namespace CoreDddSampleAspNetWebApp
 {
-    public class IoCControllerFactory : DefaultControllerFactory
+    public class IoCContainerCastleWindsorControllerFactory : DefaultControllerFactory
     {
         private readonly IWindsorContainer _iocContainer;
 
-        public IoCControllerFactory(IWindsorContainer iocContainer)
+        public IoCContainerCastleWindsorControllerFactory(IWindsorContainer iocContainer)
         {
             _iocContainer = iocContainer;
         }

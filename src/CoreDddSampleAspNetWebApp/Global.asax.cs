@@ -9,19 +9,27 @@ using CoreDdd.Commands;
 using CoreDdd.Domain.Events;
 using CoreDdd.Nhibernate.Configurations;
 using CoreDdd.Nhibernate.Register.Castle;
+using CoreDdd.Nhibernate.Register.Ninject;
 using CoreDdd.Queries;
 using CoreDdd.Register.Castle;
+using CoreDdd.Register.Ninject;
 using CoreDdd.UnitOfWorks;
 using CoreDddSampleAspNetWebApp.Controllers;
 using CoreDddSampleCommon;
 using CoreDddSampleCommon.Commands;
 using CoreDddSampleCommon.Domain;
 using CoreDddSampleCommon.Queries;
+using Ninject;
+using Ninject.Web.Common;
+using Ninject.Extensions.Conventions;
 
 namespace CoreDddSampleAspNetWebApp
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+        private WindsorContainer _castleWindsorIoCContainer;
+        private StandardKernel _ninjectIoCContainer;
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -30,15 +38,29 @@ namespace CoreDddSampleAspNetWebApp
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
 
-            var iocContainer = new WindsorContainer();
+            //_RegisterServicesIntoCastleWindsorIoCContainer();
+            _RegisterServicesIntoNinjectIoCContainer();
+
+            new DatabaseCreator().CreateDatabase().Wait();
+        }
+
+        protected void Application_End()
+        {
+            _castleWindsorIoCContainer?.Dispose();
+            _ninjectIoCContainer?.Dispose();
+        }
+
+        private void _RegisterServicesIntoCastleWindsorIoCContainer()
+        {
+            _castleWindsorIoCContainer = new WindsorContainer();
 
             CoreDddNhibernateInstaller.SetUnitOfWorkLifeStyle(x => x.PerWebRequest);
 
-            iocContainer.Install(
+            _castleWindsorIoCContainer.Install(
                 FromAssembly.Containing<CoreDddInstaller>(),
                 FromAssembly.Containing<CoreDddNhibernateInstaller>()
             );
-            iocContainer.Register(
+            _castleWindsorIoCContainer.Register(
                 Component
                     .For<INhibernateConfigurator>()
                     .ImplementedBy<CoreDddSampleNhibernateConfigurator>()
@@ -46,7 +68,7 @@ namespace CoreDddSampleAspNetWebApp
             );
 
             // register controllers, command handlers, query handlers and domain event handlers
-            iocContainer.Register(
+            _castleWindsorIoCContainer.Register(
                 Classes
                     .FromAssemblyContaining<HomeController>()
                     .BasedOn<ControllerBase>()
@@ -68,16 +90,68 @@ namespace CoreDddSampleAspNetWebApp
                     .Configure(x => x.LifestyleTransient())
             );
 
-            UnitOfWorkHttpModule.Initialize(iocContainer.Resolve<IUnitOfWorkFactory>());
-
-            ControllerBuilder.Current.SetControllerFactory(new IoCControllerFactory(iocContainer));
-
-            new DatabaseCreator().CreateDatabase().Wait();
+            UnitOfWorkHttpModule.Initialize(_castleWindsorIoCContainer.Resolve<IUnitOfWorkFactory>());
 
             DomainEvents.Initialize(
-                iocContainer.Resolve<IDomainEventHandlerFactory>(),
+                _castleWindsorIoCContainer.Resolve<IDomainEventHandlerFactory>(),
                 isDelayedDomainEventHandlingEnabled: true
-                );
+            );
+
+            ControllerBuilder.Current.SetControllerFactory(new IoCContainerCastleWindsorControllerFactory(_castleWindsorIoCContainer));
+        }
+
+        private void _RegisterServicesIntoNinjectIoCContainer()
+        {
+            _ninjectIoCContainer = new StandardKernel();
+
+            CoreDddNhibernateBindings.SetUnitOfWorkLifeStyle(x => x.InRequestScope());
+
+            _ninjectIoCContainer.Load(
+                typeof(CoreDddBindings).Assembly,
+                typeof(CoreDddNhibernateBindings).Assembly
+            );
+            _ninjectIoCContainer
+                .Bind<INhibernateConfigurator>()
+                .To<CoreDddSampleNhibernateConfigurator>()
+                .InSingletonScope();
+
+            // register controllers, command handlers, query handlers and domain event handlers
+            _ninjectIoCContainer.Bind(x => x
+                .FromAssemblyContaining<HomeController>()
+                .SelectAllClasses()
+                .InheritedFrom<ControllerBase>()
+                .BindAllInterfaces()
+                .Configure(y => y.InTransientScope()));
+
+            _ninjectIoCContainer.Bind(x => x
+                .FromAssemblyContaining<CreateNewShipCommandHandler>()
+                .SelectAllClasses()
+                .InheritedFrom(typeof(ICommandHandler<>))
+                .BindAllInterfaces()
+                .Configure(y => y.InTransientScope()));
+
+            _ninjectIoCContainer.Bind(x => x
+                .FromAssemblyContaining<GetShipsByNameQueryHandler>()
+                .SelectAllClasses()
+                .InheritedFrom(typeof(IQueryHandler<>))
+                .BindAllInterfaces()
+                .Configure(y => y.InTransientScope()));
+
+            _ninjectIoCContainer.Bind(x => x
+                .FromAssemblyContaining<ShipUpdatedDomainEventHandler>()
+                .SelectAllClasses()
+                .InheritedFrom(typeof(IDomainEventHandler<>))
+                .BindAllInterfaces()
+                .Configure(y => y.InTransientScope()));
+
+            UnitOfWorkHttpModule.Initialize(_ninjectIoCContainer.Get<IUnitOfWorkFactory>());
+
+            DomainEvents.Initialize(
+                _ninjectIoCContainer.Get<IDomainEventHandlerFactory>(),
+                isDelayedDomainEventHandlingEnabled: true
+            );
+
+            ControllerBuilder.Current.SetControllerFactory(new IoCContainerNinjectControllerFactory(_ninjectIoCContainer));
         }
     }
 }

@@ -7,20 +7,41 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDddSampleConsoleApp", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDddSampleAspNetCoreWebApp", "CoreDddSampleAspNetCoreWebApp\CoreDddSampleAspNetCoreWebApp.csproj", "{53917DA7-95DA-4BE6-A1DA-7540B82F7CB4}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDddSampleCommon", "CoreDddSampleCommon\CoreDddSampleCommon.csproj", "{1FA0625A-827B-4694-81A0-DF69213915A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDddSampleAspNetWebApp", "CoreDddSampleAspNetWebApp\CoreDddSampleAspNetWebApp.csproj", "{98490917-9A7B-4468-9D25-0A8CD97E14DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Repolinks-Debug|Any CPU = Repolinks-Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8650BFDC-77CE-4E42-AF53-9A63A93947F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8650BFDC-77CE-4E42-AF53-9A63A93947F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8650BFDC-77CE-4E42-AF53-9A63A93947F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8650BFDC-77CE-4E42-AF53-9A63A93947F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8650BFDC-77CE-4E42-AF53-9A63A93947F2}.Repolinks-Debug|Any CPU.ActiveCfg = Repolinks-Debug|Any CPU
+		{8650BFDC-77CE-4E42-AF53-9A63A93947F2}.Repolinks-Debug|Any CPU.Build.0 = Repolinks-Debug|Any CPU
 		{53917DA7-95DA-4BE6-A1DA-7540B82F7CB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{53917DA7-95DA-4BE6-A1DA-7540B82F7CB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53917DA7-95DA-4BE6-A1DA-7540B82F7CB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53917DA7-95DA-4BE6-A1DA-7540B82F7CB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53917DA7-95DA-4BE6-A1DA-7540B82F7CB4}.Repolinks-Debug|Any CPU.ActiveCfg = Repolinks-Debug|Any CPU
+		{53917DA7-95DA-4BE6-A1DA-7540B82F7CB4}.Repolinks-Debug|Any CPU.Build.0 = Repolinks-Debug|Any CPU
+		{1FA0625A-827B-4694-81A0-DF69213915A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FA0625A-827B-4694-81A0-DF69213915A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FA0625A-827B-4694-81A0-DF69213915A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FA0625A-827B-4694-81A0-DF69213915A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FA0625A-827B-4694-81A0-DF69213915A0}.Repolinks-Debug|Any CPU.ActiveCfg = Repolinks-Debug|Any CPU
+		{1FA0625A-827B-4694-81A0-DF69213915A0}.Repolinks-Debug|Any CPU.Build.0 = Repolinks-Debug|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Repolinks-Debug|Any CPU.ActiveCfg = Repolinks-Debug|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Repolinks-Debug|Any CPU.Build.0 = Repolinks-Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
