@@ -21,8 +21,4 @@
     <EmbeddedResource Include="DatabaseViews\ShipDto.sql" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
