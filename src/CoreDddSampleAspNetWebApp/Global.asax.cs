@@ -38,8 +38,8 @@ namespace CoreDddSampleAspNetWebApp
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
 
-            //_RegisterServicesIntoCastleWindsorIoCContainer();
-            _RegisterServicesIntoNinjectIoCContainer();
+            _RegisterServicesIntoCastleWindsorIoCContainer();
+            //_RegisterServicesIntoNinjectIoCContainer();
 
             new DatabaseCreator().CreateDatabase().Wait();
         }
