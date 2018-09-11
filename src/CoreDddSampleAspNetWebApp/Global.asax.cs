@@ -67,23 +67,32 @@ namespace CoreDddSampleAspNetWebApp
                     .LifestyleSingleton()
             );
 
-            // register controllers, command handlers, query handlers and domain event handlers
+            // register controllers
             _castleWindsorIoCContainer.Register(
                 Classes
                     .FromAssemblyContaining<HomeController>()
                     .BasedOn<ControllerBase>()
-                    .Configure(x => x.LifestyleTransient()),
+                    .Configure(x => x.LifestyleTransient())
+            );
+            // register command handlers
+            _castleWindsorIoCContainer.Register(
                 Classes
                     .FromAssemblyContaining<CreateNewShipCommandHandler>()
                     .BasedOn(typeof(ICommandHandler<>))
                     .WithService.FirstInterface()
-                    .Configure(x => x.LifestyleTransient()),
+                    .Configure(x => x.LifestyleTransient())
+            );
+            // register query handlers
+            _castleWindsorIoCContainer.Register(
                 Classes
                     .FromAssemblyContaining<GetShipsByNameQueryHandler>()
                     .BasedOn(typeof(IQueryHandler<>))
                     .WithService.FirstInterface()
-                    .Configure(x => x.LifestyleTransient()),
-                Classes
+                    .Configure(x => x.LifestyleTransient())
+            );
+            // register domain event handlers
+            _castleWindsorIoCContainer.Register(
+                Classes 
                     .FromAssemblyContaining<ShipUpdatedDomainEventHandler>()
                     .BasedOn(typeof(IDomainEventHandler<>))
                     .WithService.FirstInterface()
@@ -115,28 +124,28 @@ namespace CoreDddSampleAspNetWebApp
                 .To<CoreDddSampleNhibernateConfigurator>()
                 .InSingletonScope();
 
-            // register controllers, command handlers, query handlers and domain event handlers
+            // register controllers
             _ninjectIoCContainer.Bind(x => x
                 .FromAssemblyContaining<HomeController>()
                 .SelectAllClasses()
                 .InheritedFrom<ControllerBase>()
                 .BindAllInterfaces()
                 .Configure(y => y.InTransientScope()));
-
+            // register command handlers
             _ninjectIoCContainer.Bind(x => x
                 .FromAssemblyContaining<CreateNewShipCommandHandler>()
                 .SelectAllClasses()
                 .InheritedFrom(typeof(ICommandHandler<>))
                 .BindAllInterfaces()
                 .Configure(y => y.InTransientScope()));
-
+            // register query handlers
             _ninjectIoCContainer.Bind(x => x
                 .FromAssemblyContaining<GetShipsByNameQueryHandler>()
                 .SelectAllClasses()
                 .InheritedFrom(typeof(IQueryHandler<>))
                 .BindAllInterfaces()
                 .Configure(y => y.InTransientScope()));
-
+            // register domain event handlers
             _ninjectIoCContainer.Bind(x => x
                 .FromAssemblyContaining<ShipUpdatedDomainEventHandler>()
                 .SelectAllClasses()
