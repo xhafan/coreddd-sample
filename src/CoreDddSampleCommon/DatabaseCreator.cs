@@ -2,11 +2,10 @@
 using System.Data.SQLite;
 using System.IO;
 using CoreDdd.Nhibernate.DatabaseSchemaGenerators;
-using CoreDddSampleCommon.Dtos;
+using CoreDddSampleWebAppCommon.Dtos;
 
-namespace CoreDddSampleCommon
+namespace CoreDddSampleWebAppCommon
 {
-    // todo: rename CoreDddSampleCommon to CoreDddSampleWebCommon
     public class DatabaseCreator
     {
         public void CreateDatabase()

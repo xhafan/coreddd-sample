@@ -1,7 +1,7 @@
 ﻿using CoreDdd.Domain;
 using CoreDdd.Domain.Events;
 
-namespace CoreDddSampleCommon.Domain
+namespace CoreDddSampleWebAppCommon.Domain
 {
     public class Ship : Entity, IAggregateRoot
     {

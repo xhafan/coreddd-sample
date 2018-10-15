@@ -1,6 +1,6 @@
 ﻿using CoreDdd.Domain.Events;
 
-namespace CoreDddSampleCommon.Domain
+namespace CoreDddSampleWebAppCommon.Domain
 {
     public class ShipUpdatedDomainEvent : IDomainEvent
     {

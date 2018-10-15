@@ -17,10 +17,10 @@ using CoreDdd.Register.Castle;
 using CoreDdd.Register.Ninject;
 using CoreDdd.UnitOfWorks;
 using CoreDddSampleAspNetWebApp.Controllers;
-using CoreDddSampleCommon;
-using CoreDddSampleCommon.Commands;
-using CoreDddSampleCommon.Domain;
-using CoreDddSampleCommon.Queries;
+using CoreDddSampleWebAppCommon;
+using CoreDddSampleWebAppCommon.Commands;
+using CoreDddSampleWebAppCommon.Domain;
+using CoreDddSampleWebAppCommon.Queries;
 using Ninject;
 using Ninject.Web.Common;
 using Ninject.Extensions.Conventions;
@@ -52,7 +52,7 @@ namespace CoreDddSampleAspNetWebApp
                     throw new Exception($"Unknown IoC container: {iocContainer}");
             }
 
-            new DatabaseCreator().CreateDatabase().Wait();
+            new DatabaseCreator().CreateDatabase();
         }
 
         protected void Application_End()

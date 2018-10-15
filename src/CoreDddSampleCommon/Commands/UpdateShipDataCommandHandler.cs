@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using CoreDdd.Commands;
 using CoreDdd.Domain.Repositories;
-using CoreDddSampleCommon.Domain;
+using CoreDddSampleWebAppCommon.Domain;
 
-namespace CoreDddSampleCommon.Commands
+namespace CoreDddSampleWebAppCommon.Commands
 {
     public class UpdateShipDataCommandHandler : BaseCommandHandler<UpdateShipDataCommand>
     {

@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using CoreDdd.Commands;
 using CoreDdd.Queries;
-using CoreDddSampleCommon.Commands;
-using CoreDddSampleCommon.Dtos;
-using CoreDddSampleCommon.Queries;
+using CoreDddSampleWebAppCommon.Commands;
+using CoreDddSampleWebAppCommon.Dtos;
+using CoreDddSampleWebAppCommon.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoreDddSampleAspNetCoreWebApp.Controllers

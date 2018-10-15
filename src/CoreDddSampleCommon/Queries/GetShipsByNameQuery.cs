@@ -1,6 +1,6 @@
 ﻿using CoreDdd.Queries;
 
-namespace CoreDddSampleCommon.Queries
+namespace CoreDddSampleWebAppCommon.Queries
 {
     public class GetShipsByNameQuery : IQuery
     {

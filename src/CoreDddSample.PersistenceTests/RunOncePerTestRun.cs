@@ -1,6 +1,6 @@
 ﻿using System.Data.SQLite;
 using CoreDdd.Nhibernate.DatabaseSchemaGenerators;
-using CoreDddSampleCommon;
+using CoreDddSampleWebAppCommon;
 using NUnit.Framework;
 
 namespace CoreDddSample.PersistenceTests

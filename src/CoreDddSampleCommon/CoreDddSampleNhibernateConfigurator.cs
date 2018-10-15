@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 using CoreDdd.Nhibernate.Configurations;
-using CoreDddSampleCommon.Domain;
+using CoreDddSampleWebAppCommon.Domain;
 
-namespace CoreDddSampleCommon
+namespace CoreDddSampleWebAppCommon
 {
     public class CoreDddSampleNhibernateConfigurator : NhibernateConfigurator
     {

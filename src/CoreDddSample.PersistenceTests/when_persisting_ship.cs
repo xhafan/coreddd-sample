@@ -1,6 +1,6 @@
 ﻿using CoreDdd.Nhibernate.TestHelpers;
-using CoreDddSampleCommon;
-using CoreDddSampleCommon.Domain;
+using CoreDddSampleWebAppCommon;
+using CoreDddSampleWebAppCommon.Domain;
 using NUnit.Framework;
 using Shouldly;
 

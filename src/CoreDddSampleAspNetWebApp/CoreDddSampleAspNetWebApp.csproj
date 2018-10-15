@@ -315,9 +315,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CoreDddSampleCommon\CoreDddSampleCommon.csproj">
+    <ProjectReference Include="..\CoreDddSampleCommon\CoreDddSampleWebAppCommon.csproj">
       <Project>{0f717af4-1d26-4d44-ac8d-ea2bc082c59e}</Project>
-      <Name>CoreDddSampleCommon</Name>
+      <Name>CoreDddSampleWebAppCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

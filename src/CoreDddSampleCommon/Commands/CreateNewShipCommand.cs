@@ -1,6 +1,6 @@
 ﻿using CoreDdd.Commands;
 
-namespace CoreDddSampleCommon.Commands
+namespace CoreDddSampleWebAppCommon.Commands
 {
     public class CreateNewShipCommand : ICommand
     {

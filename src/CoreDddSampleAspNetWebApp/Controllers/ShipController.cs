@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using CoreDdd.Commands;
 using CoreDdd.Queries;
-using CoreDddSampleCommon.Commands;
-using CoreDddSampleCommon.Dtos;
-using CoreDddSampleCommon.Queries;
+using CoreDddSampleWebAppCommon.Commands;
+using CoreDddSampleWebAppCommon.Dtos;
+using CoreDddSampleWebAppCommon.Queries;
 
 namespace CoreDddSampleAspNetWebApp.Controllers
 {
