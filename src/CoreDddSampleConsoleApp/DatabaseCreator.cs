@@ -2,14 +2,13 @@
 using System.Data.SQLite;
 using System.IO;
 using System.Reflection;
-using System.Threading.Tasks;
-using NHibernate.Tool.hbm2ddl;
+using CoreDdd.Nhibernate.DatabaseSchemaGenerators;
 
 namespace CoreDddSampleConsoleApp
 {
     public class DatabaseCreator
     {
-        public async Task CreateDatabase()
+        public void CreateDatabase()
         {
             using (var nhibernateConfigurator = new CoreDddSampleNhibernateConfigurator(shouldMapDtos: false))
             {
@@ -19,41 +18,35 @@ namespace CoreDddSampleConsoleApp
                 using (var connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    await new SchemaExport(configuration).ExecuteAsync(
-                        useStdOut: true,
-                        execute: true,
-                        justDrop: false,
-                        connection: connection,
-                        exportOutput: null
-                    );
-                    await _CreateDtoViews(connection);
+                    new DatabaseSchemaCreator().CreateDatabaseSchema(nhibernateConfigurator, connection);
+                    _CreateDtoViews(connection);
                 }
             }                
         }
 
-        private async Task _CreateDtoViews(DbConnection connection)
+        private void _CreateDtoViews(DbConnection connection)
         {
-            await _CreateDatabaseView(connection, "PolicyDto.sql");
-            await _CreateDatabaseView(connection, "ShipDto.sql");
-            await _CreateDatabaseView(connection, "ShipCargoPolicyItemDto.sql");
+            _CreateDatabaseView(connection, "PolicyDto.sql");
+            _CreateDatabaseView(connection, "ShipDto.sql");
+            _CreateDatabaseView(connection, "ShipCargoPolicyItemDto.sql");
         }
 
-        private async Task _CreateDatabaseView(DbConnection connection, string databaseViewFileName)
+        private void _CreateDatabaseView(DbConnection connection, string databaseViewFileName)
         {
             using (var cmd = connection.CreateCommand())
             {
-                cmd.CommandText = await _ReadDatabaseViewEmbeddedResource(databaseViewFileName);
-                await cmd.ExecuteNonQueryAsync();
+                cmd.CommandText = _ReadDatabaseViewEmbeddedResource(databaseViewFileName);
+                cmd.ExecuteNonQuery();
             }
         }
 
-        private async Task<string> _ReadDatabaseViewEmbeddedResource(string resourceName)
+        private string _ReadDatabaseViewEmbeddedResource(string resourceName)
         {
             var assembly = Assembly.GetExecutingAssembly();
             using (var stream = assembly.GetManifestResourceStream($"{GetType().Namespace}.DatabaseViews.{resourceName}"))
             using (var reader = new StreamReader(stream))
             {
-                return await reader.ReadToEndAsync();
+                return reader.ReadToEnd();
             }
         }
     }

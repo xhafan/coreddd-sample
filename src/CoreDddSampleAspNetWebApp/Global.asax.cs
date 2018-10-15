@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Configuration;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Castle.MicroKernel.Registration;
@@ -37,9 +39,18 @@ namespace CoreDddSampleAspNetWebApp
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-
-            _RegisterServicesIntoCastleWindsorIoCContainer();
-            //_RegisterServicesIntoNinjectIoCContainer();
+            var iocContainer = ConfigurationManager.AppSettings["IoCContainer"];
+            switch (iocContainer)
+            {
+                case "Castle":
+                    _RegisterServicesIntoCastleWindsorIoCContainer();
+                    break;
+                case "Ninject":
+                    _RegisterServicesIntoNinjectIoCContainer();
+                    break;
+                default:
+                    throw new Exception($"Unknown IoC container: {iocContainer}");
+            }
 
             new DatabaseCreator().CreateDatabase().Wait();
         }

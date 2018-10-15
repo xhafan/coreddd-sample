@@ -6,7 +6,11 @@ namespace CoreDddSampleCommon
 {
     public class CoreDddSampleNhibernateConfigurator : NhibernateConfigurator
     {
-        public CoreDddSampleNhibernateConfigurator(bool shouldMapDtos = true)
+        public CoreDddSampleNhibernateConfigurator()
+        {
+        }
+
+        public CoreDddSampleNhibernateConfigurator(bool shouldMapDtos)
             : base(shouldMapDtos)
         {
         }

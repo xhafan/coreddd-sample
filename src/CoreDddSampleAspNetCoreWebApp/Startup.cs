@@ -91,7 +91,7 @@ namespace CoreDddSampleAspNetCoreWebApp
                 isDelayedDomainEventHandlingEnabled: true
             );
 
-            new DatabaseCreator().CreateDatabase().Wait();
+            new DatabaseCreator().CreateDatabase();
         }
     }
 }

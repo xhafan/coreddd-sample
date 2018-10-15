@@ -10,7 +10,7 @@ namespace CoreDddSampleConsoleApp
     {
         static async Task Main(string[] args)
         {
-            await new DatabaseCreator().CreateDatabase();
+            new DatabaseCreator().CreateDatabase();
 
             using (var nhibernateConfigurator = new CoreDddSampleNhibernateConfigurator())
             {

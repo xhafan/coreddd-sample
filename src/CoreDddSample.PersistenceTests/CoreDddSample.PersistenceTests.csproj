@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <Configurations>Debug;Release;Repolinks-Debug</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="hibernate.cfg.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="NUnit" Version="3.11.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
+    <PackageReference Include="Shouldly" Version="3.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' != 'Repolinks-Debug'">
+    <PackageReference Include="CoreDdd.Nhibernate.TestHelpers" Version="3.0.32" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' == 'Repolinks-Debug'">
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.Nhibernate.TestHelpers\CoreDdd.Nhibernate.TestHelpers.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoreDddSampleCommon\CoreDddSampleCommon.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'!='Release'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+</Project>
