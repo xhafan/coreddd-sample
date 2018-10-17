@@ -42,7 +42,7 @@ namespace CoreDddSampleWebAppCommon
         {
             var shipDtoType = typeof(ShipDto);
             var assembly = shipDtoType.Assembly;
-            using (var stream = assembly.GetManifestResourceStream($"CoreDddSampleCommon.DatabaseViews.{resourceName}"))
+            using (var stream = assembly.GetManifestResourceStream($"{GetType().Namespace}.DatabaseViews.{resourceName}"))
             using (var reader = new StreamReader(stream))
             {
                 return reader.ReadToEnd();
