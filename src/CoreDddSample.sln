@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDddSampleConsoleApp", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDddSampleAspNetCoreWebApp", "CoreDddSampleAspNetCoreWebApp\CoreDddSampleAspNetCoreWebApp.csproj", "{53917DA7-95DA-4BE6-A1DA-7540B82F7CB4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDddSampleWebAppCommon", "CoreDddSampleCommon\CoreDddSampleWebAppCommon.csproj", "{1FA0625A-827B-4694-81A0-DF69213915A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDddSampleWebAppCommon", "CoreDddSampleWebAppCommon\CoreDddSampleWebAppCommon.csproj", "{1FA0625A-827B-4694-81A0-DF69213915A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDddSampleAspNetWebApp", "CoreDddSampleAspNetWebApp\CoreDddSampleAspNetWebApp.csproj", "{98490917-9A7B-4468-9D25-0A8CD97E14DB}"
 EndProject

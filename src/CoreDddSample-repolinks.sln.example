@@ -58,7 +58,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDdd.Register.Dependency
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDdd.Nhibernate.Register.DependencyInjection", "repositoryLinks\coreddd\src\CoreDdd.Nhibernate.Register.DependencyInjection\CoreDdd.Nhibernate.Register.DependencyInjection.csproj", "{85169246-AC28-49B3-80D6-60956801384A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDddSampleCommon", "CoreDddSampleCommon\CoreDddSampleCommon.csproj", "{0F717AF4-1D26-4D44-AC8D-EA2BC082C59E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDddSampleWebAppCommon", "CoreDddSampleWebAppCommon\CoreDddSampleWebAppCommon.csproj", "{0F717AF4-1D26-4D44-AC8D-EA2BC082C59E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDddSample.PersistenceTests", "CoreDddSample.PersistenceTests\CoreDddSample.PersistenceTests.csproj", "{08A02CB3-B05B-4940-8EA0-8FC690FBED6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -217,6 +219,12 @@ Global
 		{0F717AF4-1D26-4D44-AC8D-EA2BC082C59E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0F717AF4-1D26-4D44-AC8D-EA2BC082C59E}.Repolinks-Debug|Any CPU.ActiveCfg = Repolinks-Debug|Any CPU
 		{0F717AF4-1D26-4D44-AC8D-EA2BC082C59E}.Repolinks-Debug|Any CPU.Build.0 = Repolinks-Debug|Any CPU
+		{08A02CB3-B05B-4940-8EA0-8FC690FBED6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08A02CB3-B05B-4940-8EA0-8FC690FBED6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08A02CB3-B05B-4940-8EA0-8FC690FBED6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08A02CB3-B05B-4940-8EA0-8FC690FBED6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08A02CB3-B05B-4940-8EA0-8FC690FBED6F}.Repolinks-Debug|Any CPU.ActiveCfg = Repolinks-Debug|Any CPU
+		{08A02CB3-B05B-4940-8EA0-8FC690FBED6F}.Repolinks-Debug|Any CPU.Build.0 = Repolinks-Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
