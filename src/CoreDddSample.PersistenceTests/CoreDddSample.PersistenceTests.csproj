@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' != 'Repolinks-Debug'">
-    <PackageReference Include="CoreDdd.Nhibernate.TestHelpers" Version="3.0.33" />
+    <PackageReference Include="CoreDdd.Nhibernate.TestHelpers" Version="3.0.34" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Repolinks-Debug'">

@@ -12,10 +12,10 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' != 'Repolinks-Debug'">
-    <PackageReference Include="CoreDdd.AspNetCore" Version="3.0.33" />
-    <PackageReference Include="CoreDdd.Nhibernate" Version="3.0.33" />
-    <PackageReference Include="CoreDdd.Nhibernate.Register.DependencyInjection" Version="3.0.33" />
-    <PackageReference Include="CoreDdd.Register.DependencyInjection" Version="3.0.33" />
+    <PackageReference Include="CoreDdd.AspNetCore" Version="3.0.34" />
+    <PackageReference Include="CoreDdd.Nhibernate" Version="3.0.34" />
+    <PackageReference Include="CoreDdd.Nhibernate.Register.DependencyInjection" Version="3.0.34" />
+    <PackageReference Include="CoreDdd.Register.DependencyInjection" Version="3.0.34" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Repolinks-Debug'">
