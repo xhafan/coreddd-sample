@@ -53,39 +53,6 @@
     <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Windsor.4.1.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
-    <Reference Include="CoreDdd, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreDdd.3.0.34\lib\net461\CoreDdd.dll</HintPath>
-    </Reference>
-    <Reference Include="CoreDdd.AspNet, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreDdd.AspNet.3.0.34\lib\net461\CoreDdd.AspNet.dll</HintPath>
-    </Reference>
-    <Reference Include="CoreDdd.Nhibernate, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreDdd.Nhibernate.3.0.34\lib\net461\CoreDdd.Nhibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="CoreDdd.Nhibernate.Register.Castle, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreDdd.Nhibernate.Register.Castle.3.0.34\lib\net461\CoreDdd.Nhibernate.Register.Castle.dll</HintPath>
-    </Reference>
-    <Reference Include="CoreDdd.Nhibernate.Register.Ninject, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreDdd.Nhibernate.Register.Ninject.3.0.34\lib\net461\CoreDdd.Nhibernate.Register.Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="CoreDdd.Register.Castle, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreDdd.Register.Castle.3.0.34\lib\net461\CoreDdd.Register.Castle.dll</HintPath>
-    </Reference>
-    <Reference Include="CoreDdd.Register.Ninject, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreDdd.Register.Ninject.3.0.34\lib\net461\CoreDdd.Register.Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="CoreIoC, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreIoC.3.0.34\lib\net40\CoreIoC.dll</HintPath>
-    </Reference>
-    <Reference Include="CoreIoC.Castle, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreIoC.Castle.3.0.34\lib\net45\CoreIoC.Castle.dll</HintPath>
-    </Reference>
-    <Reference Include="CoreIoC.Ninject, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreIoC.Ninject.3.0.34\lib\net45\CoreIoC.Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="CoreUtils, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreUtils.3.0.34\lib\net46\CoreUtils.dll</HintPath>
-    </Reference>
     <Reference Include="FluentNHibernate, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentNHibernate.2.1.2\lib\net461\FluentNHibernate.dll</HintPath>
     </Reference>
@@ -96,17 +63,17 @@
     <Reference Include="NHibernate, Version=5.1.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\packages\NHibernate.5.1.1\lib\net461\NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject.Extensions.Conventions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.Extensions.Conventions.3.3.0\lib\net45\Ninject.Extensions.Conventions.dll</HintPath>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject.Extensions.Factory, Version=3.3.2.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.Extensions.Factory.3.3.2\lib\net45\Ninject.Extensions.Factory.dll</HintPath>
+    <Reference Include="Ninject.Web, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.3.2.1.0\lib\net45-full\Ninject.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject.Web.Common, Version=3.3.1.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.Web.Common.3.3.1\lib\net45\Ninject.Web.Common.dll</HintPath>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
     </Reference>
     <Reference Include="Remotion.Linq, Version=2.1.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
       <HintPath>..\packages\Remotion.Linq.2.1.2\lib\net45\Remotion.Linq.dll</HintPath>
@@ -158,6 +125,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -169,6 +139,87 @@
     <Reference Include="Microsoft.AspNet.FriendlyUrls">
       <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' != 'Repolinks-Debug'">
+    <Reference Include="CoreDdd, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreDdd.3.0.34\lib\net461\CoreDdd.dll</HintPath>
+    </Reference>
+    <Reference Include="CoreDdd.AspNet, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreDdd.AspNet.3.0.34\lib\net461\CoreDdd.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="CoreDdd.Nhibernate, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreDdd.Nhibernate.3.0.34\lib\net461\CoreDdd.Nhibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="CoreDdd.Nhibernate.Register.Castle, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreDdd.Nhibernate.Register.Castle.3.0.34\lib\net461\CoreDdd.Nhibernate.Register.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="CoreDdd.Register.Castle, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreDdd.Register.Castle.3.0.34\lib\net461\CoreDdd.Register.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="CoreUtils, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreUtils.3.0.34\lib\net46\CoreUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="CoreDdd.Nhibernate.Register.Ninject, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreDdd.Nhibernate.Register.Ninject.3.0.34\lib\net461\CoreDdd.Nhibernate.Register.Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="CoreDdd.Register.Ninject, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreDdd.Register.Ninject.3.0.34\lib\net461\CoreDdd.Register.Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="CoreIoC, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreIoC.3.0.34\lib\net40\CoreIoC.dll</HintPath>
+    </Reference>
+    <Reference Include="CoreIoC.Castle, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreIoC.Castle.3.0.34\lib\net45\CoreIoC.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="CoreIoC.Ninject, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreIoC.Ninject.3.0.34\lib\net45\CoreIoC.Ninject.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'Repolinks-Debug'">
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.AspNet\CoreDdd.AspNet.csproj">
+      <Project>{e58df862-9e61-4b9f-a9fa-7c40e705708f}</Project>
+      <Name>CoreDdd.AspNet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.Nhibernate.Register.Castle\CoreDdd.Nhibernate.Register.Castle.csproj">
+      <Project>{45c1cdf8-8965-4fda-8da3-ee9f98d26bc2}</Project>
+      <Name>CoreDdd.Nhibernate.Register.Castle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.Nhibernate\CoreDdd.Nhibernate.csproj">
+      <Project>{719a3079-28b5-49df-af91-e1fb6bfdaaad}</Project>
+      <Name>CoreDdd.Nhibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.Register.Castle\CoreDdd.Register.Castle.csproj">
+      <Project>{19b86bf1-2697-4628-833c-77f25886a713}</Project>
+      <Name>CoreDdd.Register.Castle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd\CoreDdd.csproj">
+      <Project>{10ead7f0-1df7-4e22-853f-d9324334333a}</Project>
+      <Name>CoreDdd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreUtils\CoreUtils.csproj">
+      <Project>{062af7cb-5768-41df-a311-1fbdabe5b281}</Project>
+      <Name>CoreUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.Nhibernate.Register.Ninject\CoreDdd.Nhibernate.Register.Ninject.csproj">
+      <Project>{0B80D8A4-D28C-4EC1-B77E-72848E8A6F9C}</Project>
+      <Name>CoreDdd.Nhibernate.Register.Ninject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreDdd.Register.Ninject\CoreDdd.Register.Ninject.csproj">
+      <Project>{46989D72-F56B-450C-95B2-B27E579A7F9C}</Project>
+      <Name>CoreDdd.Register.Ninject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreIoC\CoreIoC.csproj">
+      <Project>{7D4A6761-BBF4-4D51-9EB9-AD3322B55D21}</Project>
+      <Name>CoreIoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreIoC.Castle\CoreIoC.Castle.csproj">
+      <Project>{BF6C5C11-238A-4ADE-8142-4BEC35B294A5}</Project>
+      <Name>CoreIoC.Castle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\repositoryLinks\coreddd\src\CoreIoC.Ninject\CoreIoC.Ninject.csproj">
+      <Project>{5D04ECA9-41E2-420F-916E-2E8528C7D0DC}</Project>
+      <Name>CoreIoC.Ninject</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -245,6 +296,8 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Start\NinjectWeb.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -316,6 +369,15 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Repolinks-Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

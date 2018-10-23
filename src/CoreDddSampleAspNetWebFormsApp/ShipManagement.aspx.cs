@@ -33,14 +33,14 @@ namespace CoreDddSampleAspNetWebFormsApp
             _commandExecutor.CommandExecuted += args =>
             {
                 var generatedShipId = (int)args.Args;
-                LastGeneratedShipIdLabel.Text = $"A new ship was created. ship id: {generatedShipId}";
+                LastGeneratedShipIdLabel.Text = $"{generatedShipId}";
             };
 
-            _commandExecutor.Execute(new CreateNewShipCommand
+            _commandExecutor.ExecuteAsync(new CreateNewShipCommand
             {
                 ShipName = ShipNameTextBox.Text,
                 Tonnage = int.Parse(TonnageTextBox.Text)
-            });
+            }).Wait();
 
         }
     }
