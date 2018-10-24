@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Web;
 using System.Web.Optimization;
 using System.Web.Routing;
-using System.Web.Security;
-using System.Web.SessionState;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
@@ -48,7 +44,7 @@ namespace CoreDddSampleAspNetWebFormsApp
             switch (iocContainer)
             {
                 case "Castle":
-                    _RegisterServicesIntoCastleWindsorIoCContainer();
+            _RegisterServicesIntoCastleWindsorIoCContainer();
                     break;
                 case "Ninject":
                     _RegisterServicesIntoNinjectIoCContainer();
@@ -111,6 +107,11 @@ namespace CoreDddSampleAspNetWebFormsApp
 
             UnitOfWorkHttpModule.Initialize(_castleWindsorIoCContainer.Resolve<IUnitOfWorkFactory>());
 
+            DomainEvents.Initialize(
+                _castleWindsorIoCContainer.Resolve<IDomainEventHandlerFactory>(),
+                isDelayedDomainEventHandlingEnabled: true
+            );
+
             IoC.Initialize(new CastleContainer(_castleWindsorIoCContainer));
         }
 
@@ -152,6 +153,11 @@ namespace CoreDddSampleAspNetWebFormsApp
                 .Configure(y => y.InTransientScope()));
 
             UnitOfWorkHttpModule.Initialize(_ninjectIoCContainer.Get<IUnitOfWorkFactory>());
+
+            DomainEvents.Initialize(
+                _ninjectIoCContainer.Get<IDomainEventHandlerFactory>(),
+                isDelayedDomainEventHandlingEnabled: true
+            );
 
             IoC.Initialize(new NinjectContainer(_ninjectIoCContainer));
         }

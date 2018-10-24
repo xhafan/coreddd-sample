@@ -9,14 +9,31 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:TextBox ID="ShipNameTextBox" runat="server"></asp:TextBox>
+            Ship name:
+            <asp:TextBox ID="CreateShipNameTextBox" runat="server"></asp:TextBox>
             <br />
-            <asp:TextBox ID="TonnageTextBox" runat="server"></asp:TextBox>
+            Tonnage:
+            <asp:TextBox ID="CreateTonnageTextBox" runat="server"></asp:TextBox>
             <br />
             <asp:Button ID="CreateNewShipButton" runat="server" Text="Create new ship" OnClick="CreateNewShipButton_Click" />
             <br />
             Last ship id generated: <asp:Label ID="LastGeneratedShipIdLabel" runat="server"></asp:Label>
+
+            <hr />
+            
+            Ship id:
+            <asp:TextBox ID="UpdateShipIdTextBox" runat="server"></asp:TextBox>
+            <br />
+            Ship name:
+            <asp:TextBox ID="UpdateShipNameTextBox" runat="server"></asp:TextBox>
+            <br />
+            Tonnage:
+            <asp:TextBox ID="UpdateTonnageTextBox" runat="server"></asp:TextBox>
+            <br />
+            <asp:Button ID="UpdateShipButton" runat="server" Text="Update ship" OnClick="UpdateShipButton_OnClickShipButton_Click" />
+            <br />
         </div>
     </form>
+
 </body>
 </html>

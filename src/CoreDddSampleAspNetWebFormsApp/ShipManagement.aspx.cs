@@ -34,10 +34,20 @@ namespace CoreDddSampleAspNetWebFormsApp
 
             _commandExecutor.Execute(new CreateNewShipCommand
             {
-                ShipName = ShipNameTextBox.Text,
-                Tonnage = int.Parse(TonnageTextBox.Text)
+                ShipName = CreateShipNameTextBox.Text,
+                Tonnage = int.Parse(CreateTonnageTextBox.Text)
             });
 
+        }
+
+        protected void UpdateShipButton_OnClickShipButton_Click(object sender, EventArgs e)
+        {
+            _commandExecutor.Execute(new UpdateShipDataCommand
+            {
+                ShipId = int.Parse(UpdateShipIdTextBox.Text),
+                ShipName = UpdateShipNameTextBox.Text,
+                Tonnage = int.Parse(UpdateTonnageTextBox.Text)
+            });
         }
     }
 }

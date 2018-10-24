@@ -22,7 +22,7 @@ namespace CoreDddSampleWebAppCommon.Commands
             RaiseCommandExecutedEvent(new CommandExecutedArgs { Args = newShip.Id });
         }
 
-        public override void Execute(CreateNewShipCommand command)
+        public override void Execute(CreateNewShipCommand command) // for WebForms app
         {
             ExecuteAsync(command).Wait();
         }

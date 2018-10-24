@@ -22,22 +22,22 @@ namespace CoreDddSampleAspNetWebFormsApp {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// ShipNameTextBox control.
+        /// CreateShipNameTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ShipNameTextBox;
+        protected global::System.Web.UI.WebControls.TextBox CreateShipNameTextBox;
         
         /// <summary>
-        /// TonnageTextBox control.
+        /// CreateTonnageTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TonnageTextBox;
+        protected global::System.Web.UI.WebControls.TextBox CreateTonnageTextBox;
         
         /// <summary>
         /// CreateNewShipButton control.
@@ -56,5 +56,41 @@ namespace CoreDddSampleAspNetWebFormsApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LastGeneratedShipIdLabel;
+        
+        /// <summary>
+        /// UpdateShipIdTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox UpdateShipIdTextBox;
+        
+        /// <summary>
+        /// UpdateShipNameTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox UpdateShipNameTextBox;
+        
+        /// <summary>
+        /// UpdateTonnageTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox UpdateTonnageTextBox;
+        
+        /// <summary>
+        /// UpdateShipButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button UpdateShipButton;
     }
 }

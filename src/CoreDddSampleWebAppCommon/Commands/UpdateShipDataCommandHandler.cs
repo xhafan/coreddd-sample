@@ -20,5 +20,11 @@ namespace CoreDddSampleWebAppCommon.Commands
 
             ship.UpdateData(command.ShipName, command.Tonnage);
         }
+
+        public override void Execute(UpdateShipDataCommand command) // for WebForms app
+        {
+            ExecuteAsync(command).Wait();
+        }
+
     }
 }
