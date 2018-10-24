@@ -32,6 +32,16 @@
             <br />
             <asp:Button ID="UpdateShipButton" runat="server" Text="Update ship" OnClick="UpdateShipButton_OnClick" />
             <br />
+            
+            <hr />
+            Ship name:
+            <asp:TextBox ID="SearchShipNameTextBox" runat="server"></asp:TextBox>
+            <br />
+            <asp:Button ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_OnClick" />
+            <br />
+            Number of ships queried: <asp:Label ID="NumberOfShipQueriedLabel" runat="server"></asp:Label>
+            <br />
+            <asp:ListBox ID="SearchedShipsListBox" runat="server"></asp:ListBox>
         </div>
     </form>
 
