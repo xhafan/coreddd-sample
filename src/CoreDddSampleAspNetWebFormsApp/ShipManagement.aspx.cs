@@ -40,7 +40,7 @@ namespace CoreDddSampleAspNetWebFormsApp
 
         }
 
-        protected void UpdateShipButton_OnClickShipButton_Click(object sender, EventArgs e)
+        protected void UpdateShipButton_OnClick(object sender, EventArgs e)
         {
             _commandExecutor.Execute(new UpdateShipDataCommand
             {

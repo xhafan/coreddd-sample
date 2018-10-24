@@ -30,7 +30,7 @@
             Tonnage:
             <asp:TextBox ID="UpdateTonnageTextBox" runat="server"></asp:TextBox>
             <br />
-            <asp:Button ID="UpdateShipButton" runat="server" Text="Update ship" OnClick="UpdateShipButton_OnClickShipButton_Click" />
+            <asp:Button ID="UpdateShipButton" runat="server" Text="Update ship" OnClick="UpdateShipButton_OnClick" />
             <br />
         </div>
     </form>
