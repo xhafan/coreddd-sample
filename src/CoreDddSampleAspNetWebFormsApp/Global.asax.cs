@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Transactions;
 using System.Web;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -152,12 +153,16 @@ namespace CoreDddSampleAspNetWebFormsApp
                 .BindAllInterfaces()
                 .Configure(y => y.InTransientScope()));
 
-            UnitOfWorkHttpModule.Initialize(_ninjectIoCContainer.Get<IUnitOfWorkFactory>());
-
-            DomainEvents.Initialize(
-                _ninjectIoCContainer.Get<IDomainEventHandlerFactory>(),
-                isDelayedDomainEventHandlingEnabled: true
+            Action<TransactionScope> transactionScopeEnlistmentAction = transactionScope =>
+            {
+                // enlist custom resource manager into the transaction scope
+            };
+            TransactionScopeUnitOfWorkHttpModule.Initialize(
+                _ninjectIoCContainer.Get<IUnitOfWorkFactory>(),
+                transactionScopeEnlistmentAction: transactionScopeEnlistmentAction
             );
+
+            DomainEvents.Initialize(_ninjectIoCContainer.Get<IDomainEventHandlerFactory>());
 
             IoC.Initialize(new NinjectContainer(_ninjectIoCContainer));
         }
