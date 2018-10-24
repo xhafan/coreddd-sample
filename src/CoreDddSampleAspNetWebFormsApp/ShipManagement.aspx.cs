@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using CoreDdd.Commands;
 using CoreDdd.Queries;
 using CoreDddSampleWebAppCommon.Commands;
@@ -11,7 +7,7 @@ using CoreIoC;
 
 namespace CoreDddSampleAspNetWebFormsApp
 {
-    public partial class ShipManagement : System.Web.UI.Page
+    public partial class ShipManagement : Page
     {
         private ICommandExecutor _commandExecutor;
         private IQueryExecutor _queryExecutor;
@@ -36,11 +32,11 @@ namespace CoreDddSampleAspNetWebFormsApp
                 LastGeneratedShipIdLabel.Text = $"{generatedShipId}";
             };
 
-            _commandExecutor.ExecuteAsync(new CreateNewShipCommand
+            _commandExecutor.Execute(new CreateNewShipCommand
             {
                 ShipName = ShipNameTextBox.Text,
                 Tonnage = int.Parse(TonnageTextBox.Text)
-            }).Wait();
+            });
 
         }
     }

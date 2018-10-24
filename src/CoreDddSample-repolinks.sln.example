@@ -52,8 +52,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDdd.TestHelpers", "repo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDddSampleAspNetCoreWebApp", "CoreDddSampleAspNetCoreWebApp\CoreDddSampleAspNetCoreWebApp.csproj", "{8E1266C3-73F4-4CDD-A5D0-29F0D263149C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDddSampleAspNetWebApp", "CoreDddSampleAspNetWebApp\CoreDddSampleAspNetWebApp.csproj", "{98490917-9A7B-4468-9D25-0A8CD97E14DB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDdd.Register.DependencyInjection", "repositoryLinks\coreddd\src\CoreDdd.Register.DependencyInjection\CoreDdd.Register.DependencyInjection.csproj", "{DB0476D0-4F5C-45DF-9900-89AE9197533C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDdd.Nhibernate.Register.DependencyInjection", "repositoryLinks\coreddd\src\CoreDdd.Nhibernate.Register.DependencyInjection\CoreDdd.Nhibernate.Register.DependencyInjection.csproj", "{85169246-AC28-49B3-80D6-60956801384A}"
@@ -61,6 +59,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDddSampleWebAppCommon", "CoreDddSampleWebAppCommon\CoreDddSampleWebAppCommon.csproj", "{0F717AF4-1D26-4D44-AC8D-EA2BC082C59E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDddSample.PersistenceTests", "CoreDddSample.PersistenceTests\CoreDddSample.PersistenceTests.csproj", "{08A02CB3-B05B-4940-8EA0-8FC690FBED6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDddSampleAspNetWebFormsApp", "CoreDddSampleAspNetWebFormsApp\CoreDddSampleAspNetWebFormsApp.csproj", "{3DD937F3-2EDB-4D65-9709-3AC1B6C10FAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDddSampleAspNetMvcWebApp", "CoreDddSampleAspNetMvcWebApp\CoreDddSampleAspNetMvcWebApp.csproj", "{98490917-9A7B-4468-9D25-0A8CD97E14DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -195,12 +197,6 @@ Global
 		{8E1266C3-73F4-4CDD-A5D0-29F0D263149C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8E1266C3-73F4-4CDD-A5D0-29F0D263149C}.Repolinks-Debug|Any CPU.ActiveCfg = Repolinks-Debug|Any CPU
 		{8E1266C3-73F4-4CDD-A5D0-29F0D263149C}.Repolinks-Debug|Any CPU.Build.0 = Repolinks-Debug|Any CPU
-		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Repolinks-Debug|Any CPU.ActiveCfg = Repolinks-Debug|Any CPU
-		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Repolinks-Debug|Any CPU.Build.0 = Repolinks-Debug|Any CPU
 		{DB0476D0-4F5C-45DF-9900-89AE9197533C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DB0476D0-4F5C-45DF-9900-89AE9197533C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB0476D0-4F5C-45DF-9900-89AE9197533C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -225,6 +221,18 @@ Global
 		{08A02CB3-B05B-4940-8EA0-8FC690FBED6F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{08A02CB3-B05B-4940-8EA0-8FC690FBED6F}.Repolinks-Debug|Any CPU.ActiveCfg = Repolinks-Debug|Any CPU
 		{08A02CB3-B05B-4940-8EA0-8FC690FBED6F}.Repolinks-Debug|Any CPU.Build.0 = Repolinks-Debug|Any CPU
+		{3DD937F3-2EDB-4D65-9709-3AC1B6C10FAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DD937F3-2EDB-4D65-9709-3AC1B6C10FAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DD937F3-2EDB-4D65-9709-3AC1B6C10FAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DD937F3-2EDB-4D65-9709-3AC1B6C10FAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DD937F3-2EDB-4D65-9709-3AC1B6C10FAA}.Repolinks-Debug|Any CPU.ActiveCfg = Repolinks-Debug|Any CPU
+		{3DD937F3-2EDB-4D65-9709-3AC1B6C10FAA}.Repolinks-Debug|Any CPU.Build.0 = Repolinks-Debug|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Repolinks-Debug|Any CPU.ActiveCfg = Repolinks-Debug|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Repolinks-Debug|Any CPU.Build.0 = Repolinks-Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
