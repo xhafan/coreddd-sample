@@ -16,7 +16,7 @@ using CoreDdd.Queries;
 using CoreDdd.Register.Castle;
 using CoreDdd.Register.Ninject;
 using CoreDdd.UnitOfWorks;
-using CoreDddSampleAspNetWebApp.Controllers;
+using CoreDddSampleAspNetMvcWebApp.Controllers;
 using CoreDddSampleWebAppCommon;
 using CoreDddSampleWebAppCommon.Commands;
 using CoreDddSampleWebAppCommon.Domain;
@@ -25,7 +25,7 @@ using Ninject;
 using Ninject.Web.Common;
 using Ninject.Extensions.Conventions;
 
-namespace CoreDddSampleAspNetWebApp
+namespace CoreDddSampleAspNetMvcWebApp
 {
     public class MvcApplication : System.Web.HttpApplication
     {

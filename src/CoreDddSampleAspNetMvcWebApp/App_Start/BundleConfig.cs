@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace CoreDddSampleAspNetWebApp
+namespace CoreDddSampleAspNetMvcWebApp
 {
     public class BundleConfig
     {

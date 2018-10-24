@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Castle.Windsor;
 
-namespace CoreDddSampleAspNetWebApp
+namespace CoreDddSampleAspNetMvcWebApp
 {
     public class IoCContainerCastleWindsorControllerFactory : DefaultControllerFactory
     {

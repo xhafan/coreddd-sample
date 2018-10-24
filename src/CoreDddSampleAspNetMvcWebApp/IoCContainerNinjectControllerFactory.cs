@@ -4,7 +4,7 @@ using System.Web.Routing;
 using Ninject;
 using Ninject.Syntax;
 
-namespace CoreDddSampleAspNetWebApp
+namespace CoreDddSampleAspNetMvcWebApp
 {
     public class IoCContainerNinjectControllerFactory : DefaultControllerFactory
     {

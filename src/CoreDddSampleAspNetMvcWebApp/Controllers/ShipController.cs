@@ -7,7 +7,7 @@ using CoreDddSampleWebAppCommon.Commands;
 using CoreDddSampleWebAppCommon.Dtos;
 using CoreDddSampleWebAppCommon.Queries;
 
-namespace CoreDddSampleAspNetWebApp.Controllers
+namespace CoreDddSampleAspNetMvcWebApp.Controllers
 {
     public class ShipController : Controller
     {

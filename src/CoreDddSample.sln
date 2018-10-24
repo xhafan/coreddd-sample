@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDddSampleAspNetCoreWebA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDddSampleWebAppCommon", "CoreDddSampleWebAppCommon\CoreDddSampleWebAppCommon.csproj", "{1FA0625A-827B-4694-81A0-DF69213915A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDddSampleAspNetWebApp", "CoreDddSampleAspNetWebApp\CoreDddSampleAspNetWebApp.csproj", "{98490917-9A7B-4468-9D25-0A8CD97E14DB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDddSample.PersistenceTests", "CoreDddSample.PersistenceTests\CoreDddSample.PersistenceTests.csproj", "{D0909774-3400-4F03-907E-22861CEAB269}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDddSampleAspNetWebFormsApp", "CoreDddSampleAspNetWebFormsApp\CoreDddSampleAspNetWebFormsApp.csproj", "{3DD937F3-2EDB-4D65-9709-3AC1B6C10FAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDddSampleAspNetMvcWebApp", "CoreDddSampleAspNetMvcWebApp\CoreDddSampleAspNetMvcWebApp.csproj", "{98490917-9A7B-4468-9D25-0A8CD97E14DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,12 +40,6 @@ Global
 		{1FA0625A-827B-4694-81A0-DF69213915A0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1FA0625A-827B-4694-81A0-DF69213915A0}.Repolinks-Debug|Any CPU.ActiveCfg = Repolinks-Debug|Any CPU
 		{1FA0625A-827B-4694-81A0-DF69213915A0}.Repolinks-Debug|Any CPU.Build.0 = Repolinks-Debug|Any CPU
-		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Repolinks-Debug|Any CPU.ActiveCfg = Repolinks-Debug|Any CPU
-		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Repolinks-Debug|Any CPU.Build.0 = Repolinks-Debug|Any CPU
 		{D0909774-3400-4F03-907E-22861CEAB269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D0909774-3400-4F03-907E-22861CEAB269}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0909774-3400-4F03-907E-22861CEAB269}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -58,6 +52,12 @@ Global
 		{3DD937F3-2EDB-4D65-9709-3AC1B6C10FAA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3DD937F3-2EDB-4D65-9709-3AC1B6C10FAA}.Repolinks-Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3DD937F3-2EDB-4D65-9709-3AC1B6C10FAA}.Repolinks-Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Repolinks-Debug|Any CPU.ActiveCfg = Repolinks-Debug|Any CPU
+		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Repolinks-Debug|Any CPU.Build.0 = Repolinks-Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
