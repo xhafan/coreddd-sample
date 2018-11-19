@@ -1,4 +1,4 @@
-﻿[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(CoreDddSampleAspNetWebApiApp.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(CoreDddSampleAspNetWebApiApp.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(CoreDddSampleAspNetWebApiApp.NinjectWebCommon), "Stop")]
 
 namespace CoreDddSampleAspNetWebApiApp

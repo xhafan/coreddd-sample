@@ -17,6 +17,7 @@ using CoreDdd.Register.Castle;
 using CoreDdd.Register.Ninject;
 using CoreDdd.UnitOfWorks;
 using CoreDddSampleAspNetMvcWebApp.Controllers;
+using CoreDddSampleAspNetWebApiApp;
 using CoreDddSampleWebAppCommon;
 using CoreDddSampleWebAppCommon.Commands;
 using CoreDddSampleWebAppCommon.Domain;
@@ -30,7 +31,6 @@ namespace CoreDddSampleAspNetMvcWebApp
     public class MvcApplication : System.Web.HttpApplication
     {
         private WindsorContainer _castleWindsorIoCContainer;
-        private StandardKernel _ninjectIoCContainer;
 
         protected void Application_Start()
         {
@@ -58,7 +58,6 @@ namespace CoreDddSampleAspNetMvcWebApp
         protected void Application_End()
         {
             _castleWindsorIoCContainer?.Dispose();
-            _ninjectIoCContainer?.Dispose();
         }
 
         private void _RegisterServicesIntoCastleWindsorIoCContainer()
@@ -123,56 +122,54 @@ namespace CoreDddSampleAspNetMvcWebApp
 
         private void _RegisterServicesIntoNinjectIoCContainer()
         {
-            _ninjectIoCContainer = new StandardKernel();
+            var ninjectIoCContainer = NinjectWebCommon.Bootstrapper.Kernel;
 
             CoreDddNhibernateBindings.SetUnitOfWorkLifeStyle(x => x.InRequestScope());
 
-            _ninjectIoCContainer.Load(
+            ninjectIoCContainer.Load(
                 typeof(CoreDddBindings).Assembly,
                 typeof(CoreDddNhibernateBindings).Assembly
             );
-            _ninjectIoCContainer
+            ninjectIoCContainer
                 .Bind<INhibernateConfigurator>()
                 .To<CoreDddSampleNhibernateConfigurator>()
                 .InSingletonScope();
 
             // register controllers
-            _ninjectIoCContainer.Bind(x => x
+            ninjectIoCContainer.Bind(x => x
                 .FromAssemblyContaining<HomeController>()
                 .SelectAllClasses()
                 .InheritedFrom<ControllerBase>()
                 .BindAllInterfaces()
                 .Configure(y => y.InTransientScope()));
             // register command handlers
-            _ninjectIoCContainer.Bind(x => x
+            ninjectIoCContainer.Bind(x => x
                 .FromAssemblyContaining<CreateNewShipCommandHandler>()
                 .SelectAllClasses()
                 .InheritedFrom(typeof(ICommandHandler<>))
                 .BindAllInterfaces()
                 .Configure(y => y.InTransientScope()));
             // register query handlers
-            _ninjectIoCContainer.Bind(x => x
+            ninjectIoCContainer.Bind(x => x
                 .FromAssemblyContaining<GetShipsByNameQueryHandler>()
                 .SelectAllClasses()
                 .InheritedFrom(typeof(IQueryHandler<>))
                 .BindAllInterfaces()
                 .Configure(y => y.InTransientScope()));
             // register domain event handlers
-            _ninjectIoCContainer.Bind(x => x
+            ninjectIoCContainer.Bind(x => x
                 .FromAssemblyContaining<ShipUpdatedDomainEventHandler>()
                 .SelectAllClasses()
                 .InheritedFrom(typeof(IDomainEventHandler<>))
                 .BindAllInterfaces()
                 .Configure(y => y.InTransientScope()));
 
-            UnitOfWorkHttpModule.Initialize(_ninjectIoCContainer.Get<IUnitOfWorkFactory>());
+            UnitOfWorkHttpModule.Initialize(ninjectIoCContainer.Get<IUnitOfWorkFactory>());
 
             DomainEvents.Initialize(
-                _ninjectIoCContainer.Get<IDomainEventHandlerFactory>(),
+                ninjectIoCContainer.Get<IDomainEventHandlerFactory>(),
                 isDelayedDomainEventHandlingEnabled: true
             );
-
-            ControllerBuilder.Current.SetControllerFactory(new IoCContainerNinjectControllerFactory(_ninjectIoCContainer));
         }
     }
 }
