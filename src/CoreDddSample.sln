@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDddSampleAspNetWebForms
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDddSampleAspNetMvcWebApp", "CoreDddSampleAspNetMvcWebApp\CoreDddSampleAspNetMvcWebApp.csproj", "{98490917-9A7B-4468-9D25-0A8CD97E14DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDddSampleAspNetWebApiApp", "CoreDddSampleAspNetWebApiApp\CoreDddSampleAspNetWebApiApp.csproj", "{FBEC4449-0FB6-46A8-BA9A-820461A65743}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,12 @@ Global
 		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Repolinks-Debug|Any CPU.ActiveCfg = Repolinks-Debug|Any CPU
 		{98490917-9A7B-4468-9D25-0A8CD97E14DB}.Repolinks-Debug|Any CPU.Build.0 = Repolinks-Debug|Any CPU
+		{FBEC4449-0FB6-46A8-BA9A-820461A65743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBEC4449-0FB6-46A8-BA9A-820461A65743}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBEC4449-0FB6-46A8-BA9A-820461A65743}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBEC4449-0FB6-46A8-BA9A-820461A65743}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBEC4449-0FB6-46A8-BA9A-820461A65743}.Repolinks-Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBEC4449-0FB6-46A8-BA9A-820461A65743}.Repolinks-Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

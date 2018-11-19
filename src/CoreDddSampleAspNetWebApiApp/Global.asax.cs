@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Configuration;
+using System.Transactions;
+using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -16,28 +19,29 @@ using CoreDdd.Queries;
 using CoreDdd.Register.Castle;
 using CoreDdd.Register.Ninject;
 using CoreDdd.UnitOfWorks;
-using CoreDddSampleAspNetMvcWebApp.Controllers;
+using CoreDddSampleAspNetWebApiApp.Controllers;
 using CoreDddSampleWebAppCommon;
 using CoreDddSampleWebAppCommon.Commands;
 using CoreDddSampleWebAppCommon.Domain;
 using CoreDddSampleWebAppCommon.Queries;
 using Ninject;
-using Ninject.Web.Common;
 using Ninject.Extensions.Conventions;
+using Ninject.Web.Common;
 
-namespace CoreDddSampleAspNetMvcWebApp
+namespace CoreDddSampleAspNetWebApiApp
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class WebApiApplication : HttpApplication
     {
         private WindsorContainer _castleWindsorIoCContainer;
-        private StandardKernel _ninjectIoCContainer;
 
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
 
             var iocContainer = ConfigurationManager.AppSettings["IoCContainer"];
             switch (iocContainer)
@@ -58,7 +62,6 @@ namespace CoreDddSampleAspNetMvcWebApp
         protected void Application_End()
         {
             _castleWindsorIoCContainer?.Dispose();
-            _ninjectIoCContainer?.Dispose();
         }
 
         private void _RegisterServicesIntoCastleWindsorIoCContainer()
@@ -86,6 +89,14 @@ namespace CoreDddSampleAspNetMvcWebApp
                     .Configure(x => x.LifestyleTransient())
             );
 
+            // register Web API controllers
+            _castleWindsorIoCContainer.Register(
+                Classes
+                    .FromAssemblyContaining<ShipController>()
+                    .BasedOn<ApiController>()
+                    .Configure(x => x.LifestyleTransient())
+            );
+
             // register command handlers
             _castleWindsorIoCContainer.Register(
                 Classes
@@ -104,75 +115,93 @@ namespace CoreDddSampleAspNetMvcWebApp
             );
             // register domain event handlers
             _castleWindsorIoCContainer.Register(
-                Classes 
+                Classes
                     .FromAssemblyContaining<ShipUpdatedDomainEventHandler>()
                     .BasedOn(typeof(IDomainEventHandler<>))
                     .WithService.FirstInterface()
                     .Configure(x => x.LifestyleTransient())
             );
 
-            UnitOfWorkHttpModule.Initialize(_castleWindsorIoCContainer.Resolve<IUnitOfWorkFactory>());
-
-            DomainEvents.Initialize(
-                _castleWindsorIoCContainer.Resolve<IDomainEventHandlerFactory>(),
-                isDelayedDomainEventHandlingEnabled: true
+            Action<TransactionScope> transactionScopeEnlistmentAction = transactionScope =>
+            {
+                // enlist custom resource manager into the transaction scope
+            };
+            TransactionScopeUnitOfWorkHttpModule.Initialize(
+                _castleWindsorIoCContainer.Resolve<IUnitOfWorkFactory>(),
+                transactionScopeEnlistmentAction: transactionScopeEnlistmentAction
             );
 
+            DomainEvents.Initialize(_castleWindsorIoCContainer.Resolve<IDomainEventHandlerFactory>());
+
+            GlobalConfiguration.Configuration.DependencyResolver = new IoCContainerCastleWindsorDependencyResolver(_castleWindsorIoCContainer);
             ControllerBuilder.Current.SetControllerFactory(new IoCContainerCastleWindsorControllerFactory(_castleWindsorIoCContainer));
         }
 
-        private void _RegisterServicesIntoNinjectIoCContainer()
+        public static void _RegisterServicesIntoNinjectIoCContainer()
         {
-            _ninjectIoCContainer = new StandardKernel();
+            var ninjectIoCContainer = NinjectWebCommon.Bootstrapper.Kernel;
 
             CoreDddNhibernateBindings.SetUnitOfWorkLifeStyle(x => x.InRequestScope());
 
-            _ninjectIoCContainer.Load(
+            ninjectIoCContainer.Load(
                 typeof(CoreDddBindings).Assembly,
                 typeof(CoreDddNhibernateBindings).Assembly
             );
-            _ninjectIoCContainer
+            ninjectIoCContainer
                 .Bind<INhibernateConfigurator>()
                 .To<CoreDddSampleNhibernateConfigurator>()
                 .InSingletonScope();
 
-            // register controllers
-            _ninjectIoCContainer.Bind(x => x
+            // register MVC controllers
+            ninjectIoCContainer.Bind(x => x
                 .FromAssemblyContaining<HomeController>()
                 .SelectAllClasses()
                 .InheritedFrom<ControllerBase>()
                 .BindAllInterfaces()
                 .Configure(y => y.InTransientScope()));
+
+            // register Web API controllers
+            ninjectIoCContainer.Bind(x => x
+                .FromAssemblyContaining<ShipController>()
+                .SelectAllClasses()
+                .InheritedFrom<ApiController>()
+                .BindAllInterfaces()
+                .Configure(y => y.InTransientScope()));
+
             // register command handlers
-            _ninjectIoCContainer.Bind(x => x
+            ninjectIoCContainer.Bind(x => x
                 .FromAssemblyContaining<CreateNewShipCommandHandler>()
                 .SelectAllClasses()
                 .InheritedFrom(typeof(ICommandHandler<>))
                 .BindAllInterfaces()
                 .Configure(y => y.InTransientScope()));
+
             // register query handlers
-            _ninjectIoCContainer.Bind(x => x
+            ninjectIoCContainer.Bind(x => x
                 .FromAssemblyContaining<GetShipsByNameQueryHandler>()
                 .SelectAllClasses()
                 .InheritedFrom(typeof(IQueryHandler<>))
                 .BindAllInterfaces()
                 .Configure(y => y.InTransientScope()));
+
             // register domain event handlers
-            _ninjectIoCContainer.Bind(x => x
+            ninjectIoCContainer.Bind(x => x
                 .FromAssemblyContaining<ShipUpdatedDomainEventHandler>()
                 .SelectAllClasses()
                 .InheritedFrom(typeof(IDomainEventHandler<>))
                 .BindAllInterfaces()
                 .Configure(y => y.InTransientScope()));
 
-            UnitOfWorkHttpModule.Initialize(_ninjectIoCContainer.Get<IUnitOfWorkFactory>());
-
-            DomainEvents.Initialize(
-                _ninjectIoCContainer.Get<IDomainEventHandlerFactory>(),
-                isDelayedDomainEventHandlingEnabled: true
+            Action<TransactionScope> transactionScopeEnlistmentAction = transactionScope =>
+            {
+                // enlist custom resource manager into the transaction scope
+            };
+            TransactionScopeUnitOfWorkHttpModule.Initialize(
+                ninjectIoCContainer.Get<IUnitOfWorkFactory>(),
+                transactionScopeEnlistmentAction: transactionScopeEnlistmentAction
             );
 
-            ControllerBuilder.Current.SetControllerFactory(new IoCContainerNinjectControllerFactory(_ninjectIoCContainer));
+            DomainEvents.Initialize(ninjectIoCContainer.Get<IDomainEventHandlerFactory>());
         }
     }
 }
