@@ -7,6 +7,7 @@ using Castle.MicroKernel.Lifestyle;
 
 namespace CoreDddSampleAspNetWebApiApp
 {
+    // https://stackoverflow.com/a/20071808/379279
     public class IoCContainerCastleWindsorDependencyResolver : IDependencyResolver
     {
         private readonly IWindsorContainer _container;
