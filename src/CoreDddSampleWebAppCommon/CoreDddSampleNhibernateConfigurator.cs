@@ -5,7 +5,7 @@ using HibernatingRhinos.Profiler.Appender.NHibernate;
 
 namespace CoreDddSampleWebAppCommon
 {
-    public class CoreDddSampleNhibernateConfigurator : NhibernateConfigurator
+    public class CoreDddSampleNhibernateConfigurator : BaseNhibernateConfigurator
     {
         public CoreDddSampleNhibernateConfigurator(bool shouldMapDtos = true)
             : base(shouldMapDtos)

@@ -8,7 +8,7 @@ using HibernatingRhinos.Profiler.Appender.NHibernate;
 
 namespace CoreDddSampleConsoleApp
 {
-    public class CoreDddSampleNhibernateConfigurator : NhibernateConfigurator
+    public class CoreDddSampleNhibernateConfigurator : BaseNhibernateConfigurator
     {
         public CoreDddSampleNhibernateConfigurator(bool shouldMapDtos = true)
             : base(shouldMapDtos)
