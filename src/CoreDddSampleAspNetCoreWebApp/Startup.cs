@@ -1,5 +1,5 @@
 ﻿using System.Data;
-using CoreDdd.AspNetCore.Middleware;
+using CoreDdd.AspNetCore.Middlewares;
 using CoreDdd.Commands;
 using CoreDdd.Domain.Events;
 using CoreDdd.Nhibernate.Register.DependencyInjection;
