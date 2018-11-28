@@ -168,38 +168,38 @@
     </Reference>
   </ItemGroup>
   <ItemGroup Condition="'$(Configuration)' != 'Repolinks-Debug'">
-    <Reference Include="CoreDdd, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreDdd.3.0.36\lib\net461\CoreDdd.dll</HintPath>
+    <Reference Include="CoreDdd, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreDdd.3.1.0\lib\net461\CoreDdd.dll</HintPath>
     </Reference>
-    <Reference Include="CoreDdd.AspNet, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreDdd.AspNet.3.0.36\lib\net461\CoreDdd.AspNet.dll</HintPath>
+    <Reference Include="CoreDdd.AspNet, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreDdd.AspNet.3.1.0\lib\net461\CoreDdd.AspNet.dll</HintPath>
     </Reference>
-    <Reference Include="CoreDdd.Nhibernate, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreDdd.Nhibernate.3.0.36\lib\net461\CoreDdd.Nhibernate.dll</HintPath>
+    <Reference Include="CoreDdd.Nhibernate, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreDdd.Nhibernate.3.1.0\lib\net461\CoreDdd.Nhibernate.dll</HintPath>
     </Reference>
-    <Reference Include="CoreDdd.Nhibernate.Register.Castle, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreDdd.Nhibernate.Register.Castle.3.0.36\lib\net461\CoreDdd.Nhibernate.Register.Castle.dll</HintPath>
+    <Reference Include="CoreDdd.Nhibernate.Register.Castle, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreDdd.Nhibernate.Register.Castle.3.1.0\lib\net461\CoreDdd.Nhibernate.Register.Castle.dll</HintPath>
     </Reference>
-    <Reference Include="CoreDdd.Register.Castle, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreDdd.Register.Castle.3.0.36\lib\net461\CoreDdd.Register.Castle.dll</HintPath>
+    <Reference Include="CoreDdd.Register.Castle, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreDdd.Register.Castle.3.1.0\lib\net461\CoreDdd.Register.Castle.dll</HintPath>
     </Reference>
-    <Reference Include="CoreUtils, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreUtils.3.0.36\lib\net46\CoreUtils.dll</HintPath>
+    <Reference Include="CoreUtils, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreUtils.3.1.0\lib\net46\CoreUtils.dll</HintPath>
     </Reference>
-    <Reference Include="CoreDdd.Nhibernate.Register.Ninject, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreDdd.Nhibernate.Register.Ninject.3.0.36\lib\net461\CoreDdd.Nhibernate.Register.Ninject.dll</HintPath>
+    <Reference Include="CoreDdd.Nhibernate.Register.Ninject, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreDdd.Nhibernate.Register.Ninject.3.1.0\lib\net461\CoreDdd.Nhibernate.Register.Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="CoreDdd.Register.Ninject, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreDdd.Register.Ninject.3.0.36\lib\net461\CoreDdd.Register.Ninject.dll</HintPath>
+    <Reference Include="CoreDdd.Register.Ninject, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreDdd.Register.Ninject.3.1.0\lib\net461\CoreDdd.Register.Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="CoreIoC, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreIoC.3.0.36\lib\net40\CoreIoC.dll</HintPath>
+    <Reference Include="CoreIoC, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreIoC.3.1.0\lib\net40\CoreIoC.dll</HintPath>
     </Reference>
-    <Reference Include="CoreIoC.Castle, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreIoC.Castle.3.0.36\lib\net45\CoreIoC.Castle.dll</HintPath>
+    <Reference Include="CoreIoC.Castle, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreIoC.Castle.3.1.0\lib\net45\CoreIoC.Castle.dll</HintPath>
     </Reference>
-    <Reference Include="CoreIoC.Ninject, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoreIoC.Ninject.3.0.36\lib\net45\CoreIoC.Ninject.dll</HintPath>
+    <Reference Include="CoreIoC.Ninject, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreIoC.Ninject.3.1.0\lib\net45\CoreIoC.Ninject.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup Condition="'$(Configuration)' == 'Repolinks-Debug'">
