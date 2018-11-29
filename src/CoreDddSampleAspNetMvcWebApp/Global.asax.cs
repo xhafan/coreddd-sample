@@ -110,7 +110,10 @@ namespace CoreDddSampleAspNetMvcWebApp
                     .Configure(x => x.LifestyleTransient())
             );
 
-            UnitOfWorkHttpModule.Initialize(_castleWindsorIoCContainer.Resolve<IUnitOfWorkFactory>());
+            UnitOfWorkHttpModule.Initialize(
+                _castleWindsorIoCContainer.Resolve<IUnitOfWorkFactory>(),
+                isolationLevel: System.Data.IsolationLevel.ReadCommitted
+                );
 
             DomainEvents.Initialize(
                 _castleWindsorIoCContainer.Resolve<IDomainEventHandlerFactory>(),
@@ -164,7 +167,10 @@ namespace CoreDddSampleAspNetMvcWebApp
                 .BindAllInterfaces()
                 .Configure(y => y.InTransientScope()));
 
-            UnitOfWorkHttpModule.Initialize(ninjectIoCContainer.Get<IUnitOfWorkFactory>());
+            UnitOfWorkHttpModule.Initialize(
+                ninjectIoCContainer.Get<IUnitOfWorkFactory>(),
+                isolationLevel: System.Data.IsolationLevel.ReadCommitted
+            );
 
             DomainEvents.Initialize(
                 ninjectIoCContainer.Get<IDomainEventHandlerFactory>(),

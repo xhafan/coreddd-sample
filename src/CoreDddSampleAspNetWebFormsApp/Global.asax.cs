@@ -106,7 +106,10 @@ namespace CoreDddSampleAspNetWebFormsApp
                     .Configure(x => x.LifestyleTransient())
             );
 
-            UnitOfWorkHttpModule.Initialize(_castleWindsorIoCContainer.Resolve<IUnitOfWorkFactory>());
+            UnitOfWorkHttpModule.Initialize(
+                _castleWindsorIoCContainer.Resolve<IUnitOfWorkFactory>(),
+                isolationLevel: System.Data.IsolationLevel.ReadCommitted
+                );
 
             DomainEvents.Initialize(
                 _castleWindsorIoCContainer.Resolve<IDomainEventHandlerFactory>(),
@@ -153,16 +156,15 @@ namespace CoreDddSampleAspNetWebFormsApp
                 .BindAllInterfaces()
                 .Configure(y => y.InTransientScope()));
 
-            Action<TransactionScope> transactionScopeEnlistmentAction = transactionScope =>
-            {
-                // enlist custom resource manager into the transaction scope
-            };
-            TransactionScopeUnitOfWorkHttpModule.Initialize(
+            UnitOfWorkHttpModule.Initialize(
                 _ninjectIoCContainer.Get<IUnitOfWorkFactory>(),
-                transactionScopeEnlistmentAction: transactionScopeEnlistmentAction
+                isolationLevel: System.Data.IsolationLevel.ReadCommitted
             );
 
-            DomainEvents.Initialize(_ninjectIoCContainer.Get<IDomainEventHandlerFactory>());
+            DomainEvents.Initialize(
+                _ninjectIoCContainer.Get<IDomainEventHandlerFactory>(),
+                isDelayedDomainEventHandlingEnabled: true
+            );
 
             IoC.Initialize(new NinjectContainer(_ninjectIoCContainer));
         }

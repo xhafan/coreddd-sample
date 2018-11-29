@@ -128,7 +128,8 @@ namespace CoreDddSampleAspNetWebApiApp
             };
             TransactionScopeUnitOfWorkHttpModule.Initialize(
                 _castleWindsorIoCContainer.Resolve<IUnitOfWorkFactory>(),
-                transactionScopeEnlistmentAction: transactionScopeEnlistmentAction
+                transactionScopeEnlistmentAction: transactionScopeEnlistmentAction,
+                isolationLevel: System.Transactions.IsolationLevel.ReadCommitted
             );
 
             DomainEvents.Initialize(_castleWindsorIoCContainer.Resolve<IDomainEventHandlerFactory>());
@@ -198,7 +199,8 @@ namespace CoreDddSampleAspNetWebApiApp
             };
             TransactionScopeUnitOfWorkHttpModule.Initialize(
                 ninjectIoCContainer.Get<IUnitOfWorkFactory>(),
-                transactionScopeEnlistmentAction: transactionScopeEnlistmentAction
+                transactionScopeEnlistmentAction: transactionScopeEnlistmentAction,
+                isolationLevel: System.Transactions.IsolationLevel.ReadCommitted
             );
 
             DomainEvents.Initialize(ninjectIoCContainer.Get<IDomainEventHandlerFactory>());
