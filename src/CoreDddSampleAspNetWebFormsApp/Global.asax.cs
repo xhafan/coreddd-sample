@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Configuration;
-using System.Transactions;
 using System.Web;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -45,7 +44,7 @@ namespace CoreDddSampleAspNetWebFormsApp
             switch (iocContainer)
             {
                 case "Castle":
-            _RegisterServicesIntoCastleWindsorIoCContainer();
+                    _RegisterServicesIntoCastleWindsorIoCContainer();
                     break;
                 case "Ninject":
                     _RegisterServicesIntoNinjectIoCContainer();
