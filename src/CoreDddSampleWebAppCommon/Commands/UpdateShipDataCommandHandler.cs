@@ -14,7 +14,7 @@ namespace CoreDddSampleWebAppCommon.Commands
             _shipRepository = shipRepository;
         }
 
-        public override async Task ExecuteAsync(UpdateShipDataCommand command)
+        public override async Task ExecuteAsync(UpdateShipDataCommand command) // for ASP.NET Core MVC, ASP.NET MVC and ASP.NET Web API apps
         {
             var ship = await _shipRepository.GetAsync(command.ShipId);
 
