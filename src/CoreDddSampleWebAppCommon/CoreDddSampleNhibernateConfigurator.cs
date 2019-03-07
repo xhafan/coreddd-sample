@@ -7,8 +7,12 @@ namespace CoreDddSampleWebAppCommon
 {
     public class CoreDddSampleNhibernateConfigurator : BaseNhibernateConfigurator
     {
-        public CoreDddSampleNhibernateConfigurator(bool shouldMapDtos = true)
-            : base(shouldMapDtos)
+        public CoreDddSampleNhibernateConfigurator(
+            bool shouldMapDtos = true,
+            string configurationFileName = null,
+            string connectionString = null
+        )
+            : base(shouldMapDtos, configurationFileName, connectionString)
         {
 #if DEBUG || REPOLINKS_DEBUG
             NHibernateProfiler.Initialize();
